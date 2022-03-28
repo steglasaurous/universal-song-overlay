@@ -41,9 +41,12 @@ The following options can be passed to the browser overlay by adding a query str
 `websocket_host` - The IP address or host name of the websocket server(s).  Useful for 2-pc stream setups where
 the websocket server(s) may be running on a different machine.  Default is localhost.
 
+**CAVEAT** - As of this writing, alternate websocket hosts will NOT work when served from an HTTPS URL (like github.io) due to CORS restrictions.
+The only workaround for this at the moment is to build and run the overlay on a web server running on your machine without HTTPS.
+
 Examples:
 
 ```
 # Connect to websocket server(s) on another machine (for 2-pc stream setups):
-https://steglasaurous.github.io/song-overlay/overlay.html?websocket_host=10.0.0.29
+https://steglasaurous.github.io/universal-song-overlay/?websocket_host=10.0.0.29
 ```
