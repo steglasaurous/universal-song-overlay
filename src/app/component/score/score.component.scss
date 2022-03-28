@@ -1,0 +1,29 @@
+.scores {
+  margin-left: 10px;
+  padding-bottom: 10px;
+  /* The labels for scoring like "SCORE" and "PERSONAL BEST" */
+  .fieldLabel {
+    text-transform: uppercase;
+    font-size: 12pt;
+  }
+
+  .scoreAndMultiplier {
+    font-size: 24pt;
+    display: flex;
+  }
+  .personalBestScoreContainer {
+    font-size: 24pt;
+  }
+  .scoreMultiplier {
+    background-color: white;
+    border-radius: 100px;
+    width: 50px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: black;
+    font-size: 30px;
+    margin-left: 30px;
+  }
+
+}

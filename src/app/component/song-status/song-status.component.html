@@ -1,0 +1,12 @@
+<div class="songProgress">
+  <ngb-progressbar
+    class="song-progress-bar"
+    [max]="100"
+    [value]="songPercentComplete"
+    [showValue]="false"
+  >
+  </ngb-progressbar>
+  <div class="songTime">
+    <span class="currentTime">{{ gameState.songPosition * 1000 | date:'m:ss' }}</span> / <span class="totalTime">{{ gameState.songLength * 1000 | date:'m:ss'}}</span>
+  </div>
+</div>

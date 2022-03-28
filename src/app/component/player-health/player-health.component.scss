@@ -1,0 +1,16 @@
+.playerHealth {
+  margin-left: 10px;
+}
+
+/* When health is > 75%, use this color. */
+.playerHealthGood {
+  background-color: green;
+}
+/* When health is > 40%, but < 75% */
+.playerHealthWarning {
+  background-color: yellow;
+}
+/* When health is < 40% */
+.playerHealthCritical {
+  background-color: red;
+}
