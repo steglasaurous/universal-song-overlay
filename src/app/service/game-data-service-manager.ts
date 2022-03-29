@@ -2,6 +2,7 @@ import {GameDataServiceInterface} from "./game-data-service.interface";
 import {SynthRidersGameDataService} from "./synth-riders-game-data.service";
 import {Store} from "@ngrx/store";
 import {Injectable} from "@angular/core";
+import {AudicaGameDataService} from "./audica-game-data.service";
 
 @Injectable()
 export class GameDataServiceManager {
@@ -9,10 +10,12 @@ export class GameDataServiceManager {
 
   constructor(
     private store: Store,
-    synthRidersGameDataService: SynthRidersGameDataService
+    synthRidersGameDataService: SynthRidersGameDataService,
+    audicaGameDataService: AudicaGameDataService
   ) {
     this.gameDataServices.push(
-      synthRidersGameDataService
+      synthRidersGameDataService,
+      audicaGameDataService
     );
   }
 

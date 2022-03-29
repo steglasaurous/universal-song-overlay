@@ -16,12 +16,12 @@ export class WebsocketService {
     return this.connected;
   }
 
-  constructor(host = 'localhost', port = 9000) {
-    this.websocketUrl = "ws://" + host + ":" + port;
+  constructor(host = 'localhost', port = 9000, path = '') {
+    this.websocketUrl = "ws://" + host + ":" + port + path;
   }
 
   public connect(openObserver ?: Observer<any>): void {
-    const genericRetryStrategy = ({ retryTime = 5000 }: {
+    const genericRetryStrategy = ({ retryTime = 30000 }: {
       retryTime?: number
     } = {}) => (attempts: Observable<any>) => {
       return attempts.pipe(

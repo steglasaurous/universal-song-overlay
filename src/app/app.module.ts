@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ScoreComponent } from './component/score/score.component';
 import { PlayerHealthComponent } from './component/player-health/player-health.component';
 import {supportedComponentsReducer} from "./state/supported-components.reducer";
+import {AudicaGameDataService} from "./service/audica-game-data.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {supportedComponentsReducer} from "./state/supported-components.reducer";
   ],
   providers: [
     GameDataServiceManager,
-    SynthRidersGameDataService
+    SynthRidersGameDataService,
+    AudicaGameDataService
   ],
   bootstrap: [AppComponent]
 })
