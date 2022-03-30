@@ -58,6 +58,9 @@ http://localhost:8081?websocket_host=10.0.0.29
 
 2. Configure Synth's Song Status as per step 1 of [these instructions](https://docs.google.com/document/d/13Ei4bYQRvvhUBIl4Uc5rwls-gvzsQ78bXoJQKQ_qaLo/edit#heading=h.xsyyveoj8zvr). You do not need to do step 2. Note that the important part is making sure that `{{CoverImage}}` is included in the file.  This is what produces the album art for the current song.
 
+## Audica
+
+1. Install the [Audica Websocket Server mod](https://github.com/steglasaurous/audica-websocket-server) as per its instructions.
 
 # Configuration Options
 
@@ -66,10 +69,8 @@ The following options can be passed to the browser overlay by adding a query str
 ## Options List
 
 `websocket_host` - The IP address or host name of the websocket server(s).  Useful for 2-pc stream setups where
-the websocket server(s) may be running on a different machine.  Default is localhost.
-
-**CAVEAT** - As of this writing, alternate websocket hosts will NOT work when served from an HTTPS URL (like github.io) due to CORS restrictions.
-The only workaround for this at the moment is to build and run the overlay on a web server running on your machine without HTTPS.
+the websocket server(s) may be running on a different machine.  Default is localhost. **NOTE** This will ONLY work
+with the 2-PC setup option above.
 
 Examples:
 
