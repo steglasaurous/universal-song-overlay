@@ -4,5 +4,6 @@ import {SupportedComponentsModel} from "../model/supported-components.model";
 export interface AppState {
   gameState: GameStateModel,
   isVisible: boolean,
-  supportedComponents: SupportedComponentsModel
+  supportedComponents: SupportedComponentsModel,
+  connectedGame: string
 }

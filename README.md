@@ -90,7 +90,7 @@ For initial setup, run:
 npm install
 ```
 
-To start a development server: `npm run serve`.  This will start a webserver at http://localhost:4200
+To start a development server: `npx ng serve`.  This will start a webserver at http://localhost:4200
 
 To build a production-ready release: `npm run build`.  This will place the build output in dist.  Note that a postbuild script
 runs after the build finishes to copy the script contents into the html itself to support running without a webserver.
