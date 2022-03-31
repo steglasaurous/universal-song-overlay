@@ -77,3 +77,21 @@ Examples:
 # Connect to websocket server(s) on another machine (for 2-pc stream setups):
 https://steglasaurous.github.io/universal-song-overlay/?websocket_host=10.0.0.29
 ```
+
+# For Developers: How to build
+
+If you want to add/modify things in this overlay, here's how to build it.
+
+You'll need Node.js v16 or higher installed.
+
+For initial setup, run:
+
+```
+npm install
+```
+
+To start a development server: `npm run serve`.  This will start a webserver at http://localhost:4200
+
+To build a production-ready release: `npm run build`.  This will place the build output in dist.  Note that a postbuild script
+runs after the build finishes to copy the script contents into the html itself to support running without a webserver.
+
