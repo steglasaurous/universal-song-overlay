@@ -37,16 +37,15 @@ connecting to non-secure websocket endpoints (i.e. the games) from a secure webs
 
 1. Goto this page and download the "universal-song-overlay.zip" file to your **streaming** computer.  
 2. Unzip the file anywhere on your PC (e.g. Desktop, Documents, etc). 
-3. In the unzipped folder, double-click the file called "start_webserver.bat". This will download and start
-   a simple web server on your streaming PC.
-4. In OBS, add a new browser source with the following URL, substituting the example IP address `10.0.0.29` with the IP address of your gaming PC:
+3. Open `index.html` in your web browser.  (either double-click or drag it into your web browser)
+4. Copy the URL from the web browser's location box at the top (it'll format it the way we need for the OBS browser source).
+5. In OBS, add a new browser source and paste the URL into the URL field, then add `?websocket_host=1.2.3.4` to the end of the URL, 
+   replacing `1.2.3.4` with the IP address of your gaming PC.  Here's an example of what that URL might look like, 
+   yours will be slightly different: 
 
 ```
-http://localhost:8081?websocket_host=10.0.0.29
+file:///C:/Users/subpa/Desktop/universal-song-overlay/index.html?websocket_host=10.0.0.29
 ```
-
-   **PLEASE NOTE** - Since this runs a webserver, you must make sure it's running each time you stream or the overlay won't function.  Simply
-   double-click on the `start_webserver.bat` file to start it again.
 
 5. For each game you want to use with the overlay, make sure to check game-specific requirements below.
 
