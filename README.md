@@ -6,10 +6,7 @@ information on the song being played, album art, song progress, score and player
 Currently supported games:
 
 * [Synth Riders](https://synthridersvr.com/)
-* [Audica](https://audicagame.com/)
-
-Games to be supported shortly:
- 
+* [Audica](https://audicagame.com/) 
 * [Beat Saber](https://beatsaber.com/)
 * [Boombox VR](https://www.boomboxvr.com/)
 * [Audio Trip](http://www.kinemotik.com/audiotrip/)
@@ -35,16 +32,17 @@ If you run your stream software (i.e. OBS) on a different machine than your game
 different setup you need to follow.  This is to address security issues that prevent the overlay from
 connecting to non-secure websocket endpoints (i.e. the games) from a secure website. 
 
-1. Goto this page and download the "universal-song-overlay.zip" file to your **streaming** computer.  
+1. Goto the [releases page here](https://github.com/steglasaurous/universal-song-overlay/releases/latest) and download the 
+   "universal-song-overlay.zip" file to your **streaming** computer.  
 2. Unzip the file anywhere on your PC (e.g. Desktop, Documents, etc). 
 3. Open `index.html` in your web browser.  (either double-click or drag it into your web browser)
 4. Copy the URL from the web browser's location box at the top (it'll format it the way we need for the OBS browser source).
-5. In OBS, add a new browser source and paste the URL into the URL field, then add `?websocket_host=1.2.3.4` to the end of the URL, 
+5. In OBS, add a new browser source and paste the URL into the URL field, then add `#/?websocket_host=1.2.3.4` to the end of the URL, 
    replacing `1.2.3.4` with the IP address of your gaming PC.  Here's an example of what that URL might look like, 
    yours will be slightly different: 
 
 ```
-file:///C:/Users/subpa/Desktop/universal-song-overlay/index.html?websocket_host=10.0.0.29
+file:///C:/Users/subpa/Desktop/universal-song-overlay/index.html#/?websocket_host=10.0.0.29
 ```
 
 5. For each game you want to use with the overlay, make sure to check game-specific requirements below.
@@ -61,6 +59,30 @@ file:///C:/Users/subpa/Desktop/universal-song-overlay/index.html?websocket_host=
 
 1. Install the [Audica Websocket Server mod](https://github.com/steglasaurous/audica-websocket-server) as per its instructions.
 
+## Audio Trip
+
+For a single PC setup, there's no additional setup required - the game has a built-in websocket server to gather
+game data from!
+
+For 2-PC setups, you need to configure Audio Trip to run its websocket server externally so your stream PC can connect to it.
+
+1. Download this config file to your computer: [StatServer.cfg](docs/audio-trip/StatServer.cfg)
+2. Press Windows+R to open the run dialog, and paste this into it to open your Audio Trip data folder:
+
+```
+%USERPROFILE%\AppData\LocalLow\Kinemotik Studios\Audio Trip
+```
+
+3. Copy the file you just downloaded into this folder.
+
+## Boombox
+
+No configuration necessary!  Boombox has a built-in websocket server, ready to go!
+
+## Beat Saber
+
+Using ModAssistant, make sure that BS Data Puller is installed.  
+
 # Configuration Options
 
 The following options can be passed to the browser overlay by adding a query string at the end of the URL.
@@ -70,13 +92,6 @@ The following options can be passed to the browser overlay by adding a query str
 `websocket_host` - The IP address or host name of the websocket server(s).  Useful for 2-pc stream setups where
 the websocket server(s) may be running on a different machine.  Default is localhost. **NOTE** This will ONLY work
 with the 2-PC setup option above.
-
-Examples:
-
-```
-# Connect to websocket server(s) on another machine (for 2-pc stream setups):
-https://steglasaurous.github.io/universal-song-overlay/?websocket_host=10.0.0.29
-```
 
 # For Developers: How to build
 
