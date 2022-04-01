@@ -43,9 +43,10 @@ export class AudicaGameDataService extends AbstractGameDataService {
     switch (data.eventType) {
       case "SongSelected":
         this.store.dispatch(updateSongDetails({
-          title: data.data.songName,
-          artist: data.data.songArtist,
-          mapper: data.data.songAuthor,
+          // Stripping tags as song audica tunes have <size=60%> type tags in them.
+          title: data.data.songName.replace(/(<([^>]+)>)/gi, "").trim(),
+          artist: data.data.songArtist.replace(/(<([^>]+)>)/gi, "").trim(),
+          mapper: data.data.songAuthor.replace(/(<([^>]+)>)/gi, "").trim(),
           difficulty: data.data.difficulty,
           songLength: data.data.songLengthSeconds,
           extraText: "",
