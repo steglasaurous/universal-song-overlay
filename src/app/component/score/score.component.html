@@ -2,13 +2,13 @@
   <div class="scoreContainer">
     <div class="fieldLabel">Score</div>
     <div class="scoreAndMultiplier">
-      <div class="currentScore">{{ gameState.score }}</div>
+      <div class="currentScore">{{ gameState.score|number }}</div>
       <div class="scoreMultiplier" [ngClass]="{ 'm-fadeIn': gameState.multiplier > 1, 'm-fadeOut': gameState.multiplier <= 1 }">{{ gameState.multiplier }}x</div>
     </div>
     <div class="combo" [hidden]="!showCombo">Combo +{{ gameState.combo }}</div>
   </div>
   <div class="personalBestScoreContainer" [hidden]="!showHighScore">
     <div class="fieldLabel">Personal Best</div>
-    <div class="personalBestScore">{{ gameState.highScore }}</div>
+    <div class="personalBestScore">{{ gameState.highScore|number }}</div>
   </div>
 </div>
