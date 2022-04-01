@@ -43,7 +43,8 @@ const routes: Routes =[
       connectedGame: connectedGameReducer
     }, {}),
     NgbModule,
-    RouterModule.forRoot(routes)
+    // NOTE: Using the hash strategy for routing so that this app will work when loaded directly as a file (for 2-pc stream setups)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [
     {
