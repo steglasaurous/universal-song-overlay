@@ -20,6 +20,9 @@ export abstract class AbstractGameDataService {
     protected path: string = "/"
   ) {
     this.websocketService = new WebsocketService(this.host, this.port, this.path);
+  }
+
+  public connect() {
     this.websocketService.connect(
       {
         next: (value) => {
@@ -46,7 +49,7 @@ export abstract class AbstractGameDataService {
           this.websocketService.isRetryEnabled = false;
         } else if (gameName == NO_GAME_CONNECTED) {
           // No game is connected now.  Start looking for connections if we're not already.
-          if (this.websocketService.isRetryEnabled != true) {
+          if (!this.websocketService.isRetryEnabled) {
             this.websocketService.isRetryEnabled = true;
             this.websocketService.reconnect();
           }
@@ -54,9 +57,13 @@ export abstract class AbstractGameDataService {
       }
     });
 
-    this.websocketService.messages$.pipe(tap(this.processMessage)).subscribe();
+    this.websocketService.messages$.pipe(tap(this.processMessage.bind(this))).subscribe();
   }
 
+  public setHost(host: string) {
+    this.host = host;
+    this.websocketService.setHost(host);
+  }
   abstract supports(): SupportedComponentsModel;
 
   abstract getGameName(): string;

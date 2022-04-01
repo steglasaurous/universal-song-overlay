@@ -9,7 +9,7 @@ export class WebsocketService {
   public messages$ = this.messagesSubject$.pipe(catchError(e => {
     throw e;
   }));
-  private websocketUrl: string;
+
   private connected: boolean = false;
 
   /**
@@ -24,8 +24,18 @@ export class WebsocketService {
     return this.connected;
   }
 
-  constructor(host = 'localhost', port = 9000, path = '') {
-    this.websocketUrl = "ws://" + host + ":" + port + path;
+  constructor(
+    private host = 'localhost',
+    private port = 9000,
+    private path = '') {
+  }
+
+  get websocketUrl() {
+    return "ws://" + this.host + ":" + this.port + this.path;
+  }
+
+  setHost(host: string) {
+    this.host = host;
   }
 
   public connect(openObserver ?: Observer<any>, onClose ?: Function): void {

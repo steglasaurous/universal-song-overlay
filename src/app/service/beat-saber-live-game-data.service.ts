@@ -1,15 +1,13 @@
 import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {
-  clearAll, setHighScore,
   updatePlayerHealth,
   updateScore,
-  updateSongDetails,
   updateSongPosition
 } from "../state/gamestate.actions";
 import {AbstractGameDataService} from "./abstract-game-data.service";
 
-export class BeatSaberMapGameDataService extends AbstractGameDataService
+export class BeatSaberLiveGameDataService extends AbstractGameDataService
 {
   constructor(
     store: Store,

@@ -16,14 +16,15 @@ import {AudicaGameDataService} from "./service/audica-game-data.service";
 import {GameDataServiceFactory} from "./service/game-data-service.factory";
 import {connectedGameReducer} from "./state/connected-game.reducer";
 import {BoomboxGameDataService} from "./service/boombox-game-data.service";
+import {AudioTripGameDataService} from "./service/audio-trip-game-data.service";
+import {BeatSaberMapGameDataService} from "./service/beat-saber-map-game-data.service";
+import {BeatSaberLiveGameDataService} from "./service/beat-saber-live-game-data.service";
+import {RouterModule, Routes} from "@angular/router";
+import { HomeComponent } from './component/home/home.component';
 
-/**
- * This is what reads the query params for an alternate websocket_host.  This seems a little 'hacky' to me, but
- * for now it works.
- */
-let params = new URLSearchParams(window.location.search);
-const websocketHost = params.get('websocket_host') ?? "localhost";
-
+const routes: Routes =[
+  { path: "", component: HomeComponent}
+];
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ const websocketHost = params.get('websocket_host') ?? "localhost";
     SongDetailsComponent,
     SongStatusComponent,
     ScoreComponent,
-    PlayerHealthComponent
+    PlayerHealthComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,17 +42,27 @@ const websocketHost = params.get('websocket_host') ?? "localhost";
       supportedComponents: supportedComponentsReducer,
       connectedGame: connectedGameReducer
     }, {}),
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     {
-      provide: SynthRidersGameDataService, useFactory: GameDataServiceFactory(SynthRidersGameDataService.name, websocketHost), deps: [ Store ]
+      provide: SynthRidersGameDataService, useFactory: GameDataServiceFactory(SynthRidersGameDataService.name), deps: [ Store ]
     },
     {
-      provide: AudicaGameDataService, useFactory: GameDataServiceFactory(AudicaGameDataService.name, websocketHost), deps: [ Store ]
+      provide: AudicaGameDataService, useFactory: GameDataServiceFactory(AudicaGameDataService.name), deps: [ Store ]
     },
     {
-      provide: BoomboxGameDataService, useFactory: GameDataServiceFactory(BoomboxGameDataService.name, websocketHost), deps: [ Store ]
+      provide: BoomboxGameDataService, useFactory: GameDataServiceFactory(BoomboxGameDataService.name), deps: [ Store ]
+    },
+    {
+      provide: AudioTripGameDataService, useFactory: GameDataServiceFactory(AudioTripGameDataService.name), deps: [ Store ]
+    },
+    {
+      provide: BeatSaberMapGameDataService, useFactory: GameDataServiceFactory(BeatSaberMapGameDataService.name), deps: [ Store ]
+    },
+    {
+      provide: BeatSaberLiveGameDataService, useFactory: GameDataServiceFactory(BeatSaberLiveGameDataService.name), deps: [ Store ]
     },
     GameDataServiceManager
   ],
