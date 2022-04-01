@@ -19,8 +19,6 @@ export abstract class AbstractGameDataService {
     protected port: number = 9000, // Mash this into a 'configuration' object?
     protected path: string = "/"
   ) {
-
-
     this.websocketService = new WebsocketService(this.host, this.port, this.path);
     this.websocketService.connect(
       {
@@ -43,10 +41,10 @@ export abstract class AbstractGameDataService {
     this.connectedGame$.subscribe({
       next: (gameName) => {
         this.connectedGame = gameName;
-        if (this.connectedGame != this.getGameName() && gameName != undefined && gameName != NO_GAME_CONNECTED) {
+        if (gameName != this.getGameName() && gameName != undefined && gameName != NO_GAME_CONNECTED) {
           // Another game connected.  Disable retries for now.
           this.websocketService.isRetryEnabled = false;
-        } else if (this.connectedGame == NO_GAME_CONNECTED) {
+        } else if (gameName == NO_GAME_CONNECTED) {
           // No game is connected now.  Start looking for connections if we're not already.
           if (this.websocketService.isRetryEnabled != true) {
             this.websocketService.isRetryEnabled = true;
