@@ -30,7 +30,8 @@ export class AudicaGameDataService extends AbstractGameDataService {
       songStatus: true,
       playerHealth: true,
       score: true,
-      highScore: true
+      highScore: true,
+      combo: true
     };
   }
 

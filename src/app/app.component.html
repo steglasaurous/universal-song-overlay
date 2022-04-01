@@ -10,7 +10,8 @@
   <app-score
     [hidden]="!supportedComponents.score"
     [gameState]="(gameState$ | async) || gameState"
-    [showHighScore]="supportedComponents.highScore">
+    [showHighScore]="supportedComponents.highScore"
+    [showCombo]="supportedComponents.combo">
   </app-score>
   <app-player-health
     [hidden]="!supportedComponents.playerHealth"

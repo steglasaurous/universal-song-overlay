@@ -15,6 +15,7 @@ import {supportedComponentsReducer} from "./state/supported-components.reducer";
 import {AudicaGameDataService} from "./service/audica-game-data.service";
 import {GameDataServiceFactory} from "./service/game-data-service.factory";
 import {connectedGameReducer} from "./state/connected-game.reducer";
+import {BoomboxGameDataService} from "./service/boombox-game-data.service";
 
 /**
  * This is what reads the query params for an alternate websocket_host.  This seems a little 'hacky' to me, but
@@ -47,6 +48,9 @@ const websocketHost = params.get('websocket_host') ?? "localhost";
     },
     {
       provide: AudicaGameDataService, useFactory: GameDataServiceFactory(AudicaGameDataService.name, websocketHost), deps: [ Store ]
+    },
+    {
+      provide: BoomboxGameDataService, useFactory: GameDataServiceFactory(BoomboxGameDataService.name, websocketHost), deps: [ Store ]
     },
     GameDataServiceManager
   ],

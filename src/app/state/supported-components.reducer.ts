@@ -7,7 +7,8 @@ export const supportedComponentsInitialState: SupportedComponentsModel = {
   score: false,
   songStatus: false,
   highScore: false,
-  songDetails: false
+  songDetails: false,
+  combo: false
 }
 
 export const supportedComponentsReducer = createReducer(

@@ -8,6 +8,7 @@ import {updateSupportedComponents} from "../state/supported-components.actions";
 import {tap} from "rxjs";
 
 export abstract class AbstractGameDataService {
+  // Make this an array of websocket services?
   protected websocketService: WebsocketService;
   protected connectedGame$ = this.store.select(selectConnectedGame);
   protected connectedGame: string = NO_GAME_CONNECTED;
@@ -15,9 +16,11 @@ export abstract class AbstractGameDataService {
   protected constructor(
     protected store: Store,
     protected host: string,
-    protected port: number = 9000,
+    protected port: number = 9000, // Mash this into a 'configuration' object?
     protected path: string = "/"
   ) {
+
+
     this.websocketService = new WebsocketService(this.host, this.port, this.path);
     this.websocketService.connect(
       {
