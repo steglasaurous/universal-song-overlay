@@ -59,11 +59,11 @@ export class AudioTripGameDataService extends AbstractGameDataService
     if (data.inSong == true) {
       if (this.gameState.title != data.songTitle) {
         this.store.dispatch(updateSongDetails({
-          title: data.data.songTitle,
-          artist: data.data.songArtist,
-          mapper: data.data.choreographer,
-          difficulty: data.data.choreoName,
-          songLength: data.data.songLength,
+          title: data.songTitle,
+          artist: data.songArtist,
+          mapper: data.choreographer,
+          difficulty: data.choreoName,
+          songLength: data.songLength,
           extraText: "",
           albumArt: ""
         }));

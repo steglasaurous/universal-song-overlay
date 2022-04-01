@@ -26,7 +26,8 @@ export class GameDataServiceManager {
       audicaGameDataService,
       boomboxGameDataService,
       beatSaberMapGameDataService,
-      beatSaberLiveGameDataService
+      beatSaberLiveGameDataService,
+      audioTripGameDataService
     );
   }
 
