@@ -77,7 +77,13 @@ const argv = yargs(process.argv.slice(2))
       'delay',{
         describe: "Slow down playback of game data",
         type: 'boolean'
-      });
+      })
+      .option(
+        'file', {
+          describe: "Use this event file instead of the default",
+          type: 'string'
+        }
+      );
   },(argv) => {
-    serve(argv.game, "", argv.delay);
+    serve(argv.game, argv.file, argv.delay);
   }).help().argv;
