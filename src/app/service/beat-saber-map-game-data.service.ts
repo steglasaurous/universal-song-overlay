@@ -51,7 +51,7 @@ export class BeatSaberMapGameDataService extends AbstractGameDataService
         albumArt: data.coverImage ?? ""
       }));
       this.store.dispatch(setHighScore({ highScore: data.PreviousRecord }));
-    } else {
+    } else if (data.SongName === "") {
       this.store.dispatch(clearAll());
     }
   }

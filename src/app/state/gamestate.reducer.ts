@@ -43,8 +43,6 @@ export const gameStateReducer = createReducer(
     };
   }),
   on(updateSongPosition, (state: GameStateModel, { songPosition }): GameStateModel => {
-    console.log(state);
-
     return {
       ...state,
       songPosition: songPosition

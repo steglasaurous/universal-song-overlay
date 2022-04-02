@@ -38,17 +38,23 @@ export class BeatSaberLiveGameDataService extends AbstractGameDataService
   }
 
   override processMessage(data: any) {
-    this.store.dispatch(updateScore({
-      score: data.ScoreWithMultipliers,
-      combo: data.Combo
-    }));
+    if (data.ScoreWithMultipliers) {
+      this.store.dispatch(updateScore({
+        score: data.ScoreWithMultipliers,
+        combo: data.Combo
+      }));
+    }
 
-    this.store.dispatch(updatePlayerHealth({
-      playerHealth: data.PlayerHealth
-    }));
+    if (data.PlayerHealth) {
+      this.store.dispatch(updatePlayerHealth({
+        playerHealth: data.PlayerHealth
+      }));
+    }
 
-    this.store.dispatch(updateSongPosition({
-      songPosition: data.TimeElapsed
-    }));
+    if (data.TimeElapsed) {
+      this.store.dispatch(updateSongPosition({
+        songPosition: data.TimeElapsed
+      }));
+    }
   }
 }

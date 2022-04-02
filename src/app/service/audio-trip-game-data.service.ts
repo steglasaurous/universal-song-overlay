@@ -83,7 +83,7 @@ export class AudioTripGameDataService extends AbstractGameDataService
           playerHealth: Math.floor(data.playerHealth * 100)
         }));
       }
-    } else {
+    } else if (data.inSong === false) {
       if (this.gameState.title) {
         this.store.dispatch(clearAll());
       }
