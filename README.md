@@ -93,6 +93,15 @@ The following options can be passed to the browser overlay by adding a query str
 the websocket server(s) may be running on a different machine.  Default is localhost. **NOTE** This will ONLY work
 with the 2-PC setup option above.
 
+`show` - a comma-delimited list of parts of the overlay to show.  If not provided, everything is shown by default.   This is useful to split up parts of the overlay to different parts of the screen instead of everything being together in one place. You would do this by creating multiple browser sources in OBS with different URLs.
+
+This list can include any of the following:
+
+* `song-details` - Show details about the song includinig title, artist, mapper, difficulty and album art.
+* `song-progress` - Show the progress of the song as it plays, with time and a progress bar.
+* `score` - Show current score and personal best score (if available)
+* `player-health` - Show player's health, if available, with a life bar and percentage.
+
 # For Developers: How to build
 
 If you want to add/modify things in this overlay, here's how to build it.

@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   // https://stackoverflow.com/questions/61780339/angular-ivy-stricttemplates-true-type-boolean-null-is-not-assignable-to-type
   gameState: GameStateModel = initialState;
   supportedComponents: SupportedComponentsModel = supportedComponentsInitialState;
+  enabledComponents: string[] = ['song-details','song-status','score','player-health'];
 
   constructor(
     private store: Store,
@@ -40,6 +41,14 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     const overrideWebsocketHost: string = this.route.snapshot.queryParamMap.get('websocket_host') ?? "";
+
+    const overrideEnabledComponents: string = this.route.snapshot.queryParamMap.get('show') ?? "";
+
+    if (overrideEnabledComponents) {
+      this.enabledComponents = overrideEnabledComponents.split(',')
+    }
+
+    this.enabledComponents.find(element => element == 'test');
 
     if (overrideWebsocketHost) {
       this.gameDataServiceManager.setWebsocketHost(overrideWebsocketHost);

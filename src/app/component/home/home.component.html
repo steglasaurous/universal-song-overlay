@@ -1,24 +1,20 @@
 <div [hidden]="gameState.title == ''">
   <app-song-details
-    [hidden]="!supportedComponents.songDetails"
+    [hidden]="!supportedComponents.songDetails || enabledComponents.indexOf('song-details') < 0"
     [gameState]="(gameState$ | async) || gameState"
     [ngClass]="{'m-fadeOut': gameState.title == '', 'm-fadeIn': gameState.title != ''}"></app-song-details>
   <app-song-status
-    [hidden]="!supportedComponents.songStatus"
+    [hidden]="!supportedComponents.songStatus || enabledComponents.indexOf('song-status') < 0"
     [gameState]="(gameState$ | async) || gameState">
   </app-song-status>
   <app-score
-    [hidden]="!supportedComponents.score"
+    [hidden]="!supportedComponents.score || enabledComponents.indexOf('score') < 0"
     [gameState]="(gameState$ | async) || gameState"
     [showHighScore]="supportedComponents.highScore"
     [showCombo]="supportedComponents.combo">
   </app-score>
   <app-player-health
-    [hidden]="!supportedComponents.playerHealth"
+    [hidden]="!supportedComponents.playerHealth || enabledComponents.indexOf('player-health') < 0"
     [gameState]="(gameState$ | async) || gameState">
   </app-player-health>
 </div>
-<!--
-<button (click)="testUpdate()">Test update</button>
-<button (click)="testClear()">Test clear</button>
--->
