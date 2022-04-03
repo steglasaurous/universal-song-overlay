@@ -1,5 +1,7 @@
 # Rhythm Game Universal Song Overlay
 
+![screenshot](docs/overlay-screenshot.png)
+
 This system provides a browser overlay for OBS that works with a number of VR rhythm games, showing
 information on the song being played, album art, song progress, score and player health (where supported).
 
@@ -93,26 +95,94 @@ No configuration necessary!  Boombox has a built-in websocket server, ready to g
 
 ## Beat Saber
 
-Using ModAssistant, make sure that BS Data Puller is installed.  
+NOTE: Support for Beat Saber is UNTESTED as yet.
+
+Using ModAssistant, make sure that BS Data Puller is installed.    
 
 # Configuration Options
 
-The following options can be passed to the browser overlay by adding a query string at the end of the URL.
+The following options can be passed to the browser overlay by adding a hash and query string at the end of the URL, like this:
 
-## Options List
+```
+https://steglasaurous.github.io/universal-song-overlay/#?show=song-details
+```
 
-`websocket_host` - The IP address or host name of the websocket server(s).  Useful for 2-pc stream setups where
-the websocket server(s) may be running on a different machine.  Default is localhost. **NOTE** This will ONLY work
-with the 2-PC setup option above.
+## Customizing look and feel
 
-`show` - a comma-delimited list of parts of the overlay to show.  If not provided, everything is shown by default.   This is useful to split up parts of the overlay to different parts of the screen instead of everything being together in one place. You would do this by creating multiple browser sources in OBS with different URLs.
+### Only showing individual components
+
+`show` - a comma-delimited list of parts of the overlay to show.  If not provided, everything is shown by default.   
+This is useful to split up parts of the overlay to different parts of the screen instead of everything being together 
+in one place. You would do this by creating multiple browser sources in OBS with different URLs.
 
 This list can include any of the following:
 
 * `song-details` - Show details about the song includinig title, artist, mapper, difficulty and album art.
-* `song-progress` - Show the progress of the song as it plays, with time and a progress bar.
+* `song-status` - Show the progress of the song as it plays, with time and a progress bar.
 * `score` - Show current score and personal best score (if available)
 * `player-health` - Show player's health, if available, with a life bar and percentage.
+
+**Examples**
+
+Show only song details, hide progress, score and health
+```
+https://steglasaurous.github.io/universal-song-overlay/#?show=song-details
+```
+
+Show song details and score, but hide song status and health
+```
+https://steglasaurous.github.io/universal-song-overlay/#?show=song-details,score
+```
+
+Show everything except health
+```
+https://steglasaurous.github.io/universal-song-overlay/#?show=song-details,song-status,score
+```
+
+### Themes and Layout
+
+`theme` - a comma-delimited list of themes to apply.  Some themes are meant to be modifiers to adjust layout.
+
+Currently available themes:
+
+- default - Default white text with a serif font
+- sulfur - A purple-inspired theme
+
+More themes coming soon!
+
+Modifiers available:
+
+- align-right - Right-align all items suitable for displaying on the other side of the screen
+- stretch-health-progress-bar - Instead of constraining the health progress bar, it's allowed to fill the width of the screen.
+- stretch-song-progress-bar - Instead of constraining the song progress bar, it's allowed to fill the width of the screen.
+
+The stretch modifiers are useful when you want do things like showing the progress bar at the bottom of the screen at full size.
+
+**Examples**
+
+Use the sulfur theme:
+
+```
+https://steglasaurous.github.io/universal-song-overlay/#?theme=sulfur
+```
+
+Use the sulfur theme but right-align all the content:
+
+```
+https://steglasaurous.github.io/universal-song-overlay/#?theme=sulfur,align-right
+```
+
+Stretch the song status bar to fill the width of the screen, and only show the song status bar:
+
+```
+https://steglasaurous.github.io/universal-song-overlay/#?theme=sulfur,stretch-song-progress-bar&show=song-status
+```
+
+## Websocket
+
+`websocket_host` - The IP address or host name of the websocket server(s).  Useful for 2-pc stream setups where
+the websocket server(s) may be running on a different machine.  Default is localhost. **NOTE** This will ONLY work
+with the 2-PC setup option above.
 
 # For Developers: How to build
 
@@ -131,3 +201,32 @@ To start a development server: `npx ng serve`.  This will start a webserver at h
 To build a production-ready release: `npm run build`.  This will place the build output in dist.  Note that a postbuild script
 runs after the build finishes to copy the script contents into the html itself to support running without a webserver.
 
+## Creating themes
+
+Themes are SCSS files that live in `src/themes`.  
+
+To create your own theme: 
+
+* Create your own SCSS file and place it in the `src/themes` folder. (if it's a modifier - i.e. a change that can apply to all themes, place it in `src/themes/modifiers`)
+* In `angular.json`, add your theme to the styles list, located under `projects > universal-song-overlay > architect > build > options > styles` like this:
+
+```json
+"styles": [
+  "src/styles.scss",
+  {
+    "input": "src/themes/default.scss",
+    "bundleName": "default",
+    "inject": false
+  },
+  // Your new theme:
+  {
+    "input": "src/themes/your-new-theme.scss",
+    "bundleName": "your-new-theme",
+    "inject": false
+  }
+]
+```
+
+Your theme will be accessible via the theme parameter with the name you gave for `bundleName` above.
+
+See `src/themes/default.scss` for a rundown of available classes you can override.
