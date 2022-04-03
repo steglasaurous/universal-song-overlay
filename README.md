@@ -15,7 +15,14 @@ Currently supported games:
 
 # Usage
 
-## For Single-PC Stream Setups
+To setup you will:
+
+1. Add a new browser source to OBS with the overlay
+2. Setup your particular game(s) as necessary to work with the overlay.
+
+## 1. Setup OBS Browser Source
+
+### For Single-PC Stream Setups
 
 If you run your stream software (i.e. OBS) on the same computer as your game, you get the
 easy setup!  Follow these steps.
@@ -28,7 +35,7 @@ https://steglasaurous.github.io/universal-song-overlay
 
 2. For each game you want to use with the overlay, make sure to check game-specific requirements below.
 
-## For 2-PC Stream Setups
+### For 2-PC Stream Setups
 
 If you run your stream software (i.e. OBS) on a different machine than your game, there's a slightly
 different setup you need to follow.  This is to address security issues that prevent the overlay from
@@ -47,9 +54,11 @@ connecting to non-secure websocket endpoints (i.e. the games) from a secure webs
 file:///C:/Users/subpa/Desktop/universal-song-overlay/index.html#/?websocket_host=10.0.0.29
 ```
 
-5. For each game you want to use with the overlay, make sure to check game-specific requirements below.
+6. For each game you want to use with the overlay, make sure to check game-specific requirements below.
 
-# Game-specific Requirements
+# 2. Setup your Game(s)
+
+Setup your game(s) as described here.
 
 ## Synth Riders
 
@@ -81,13 +90,13 @@ game data from!
 For 2-PC setups, you need to configure Audio Trip to run its websocket server externally so your stream PC can connect to it.
 
 1. Download this config file to your computer: [StatServer.cfg](docs/audio-trip/StatServer.cfg)
-2. Press Windows+R to open the run dialog, and paste this into it to open your Audio Trip data folder:
+2. Press Windows+R to open the run dialog, and paste in the following to open your Audio Trip data folder:
 
 ```
 %USERPROFILE%\AppData\LocalLow\Kinemotik Studios\Audio Trip
 ```
 
-3. Copy the file you just downloaded into this folder.
+3. Copy the StatServer.cfg file you just downloaded into this folder.
 
 ## Boombox
 
@@ -97,7 +106,7 @@ No configuration necessary!  Boombox has a built-in websocket server, ready to g
 
 NOTE: Support for Beat Saber is UNTESTED as yet.
 
-Using ModAssistant, make sure that BS Data Puller is installed.    
+1. Using ModAssistant, make sure that BS Data Puller is installed.    
 
 # Configuration Options
 
@@ -145,16 +154,16 @@ https://steglasaurous.github.io/universal-song-overlay/#?show=song-details,song-
 
 Currently available themes:
 
-- default - Default white text with a serif font
-- sulfur - A purple-inspired theme
+- `default` - Default white text with a serif font
+- `sulfur` - A purple-inspired theme
 
 More themes coming soon!
 
 Modifiers available:
 
-- align-right - Right-align all items suitable for displaying on the other side of the screen
-- stretch-health-progress-bar - Instead of constraining the health progress bar, it's allowed to fill the width of the screen.
-- stretch-song-progress-bar - Instead of constraining the song progress bar, it's allowed to fill the width of the screen.
+- `align-right` - Right-align all items suitable for displaying on the other side of the screen
+- `stretch-health-progress-bar` - Instead of constraining the health progress bar, it's allowed to fill the width of the screen.
+- `stretch-song-progress-bar` - Instead of constraining the song progress bar, it's allowed to fill the width of the screen.
 
 The stretch modifiers are useful when you want do things like showing the progress bar at the bottom of the screen at full size.
 
