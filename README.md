@@ -55,6 +55,18 @@ file:///C:/Users/subpa/Desktop/universal-song-overlay/index.html#/?websocket_hos
 
 2. Configure Synth's Song Status as per step 1 of [these instructions](https://docs.google.com/document/d/13Ei4bYQRvvhUBIl4Uc5rwls-gvzsQ78bXoJQKQ_qaLo/edit#heading=h.xsyyveoj8zvr). You do not need to do step 2. Note that the important part is making sure that `{{CoverImage}}` is included in the file.  This is what produces the album art for the current song.
 
+**For 2-PC Stream Setups**
+
+By default, the websocket mod is only available to the local machine.  To open it up for remote connections:
+1. In your Synth Riders folder, in the `UserData` directory, create a filed called `MelonPreferences.cfg`.  It's possible this file already exists, and that's OK.
+2. Add this to the end of the file and save it:
+
+```
+[Connection]
+Host = "0.0.0.0"
+Port = 9000
+```
+
 ## Audica
 
 1. Install the [Audica Websocket Server mod](https://github.com/steglasaurous/audica-websocket-server) as per its instructions.
