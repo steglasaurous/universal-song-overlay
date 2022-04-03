@@ -23,7 +23,7 @@ easy setup!  Follow these steps.
 1. In OBS, add a new browser source with the following URL:  
 
 ```
-https://steglasaurous.github.io/universal-song-overlay/index.html
+https://steglasaurous.github.io/universal-song-overlay
 ```
 
 2. For each game you want to use with the overlay, make sure to check game-specific requirements below.
