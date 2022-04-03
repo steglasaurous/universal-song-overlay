@@ -1,12 +1,18 @@
 import * as fs from 'fs';
 
-import { WebSocketServer } from 'ws';
+import {WebSocket, WebSocketServer} from 'ws';
 import yargs from 'yargs';
 
 const gameConfigs = {
   audica: {
     port: 8085,
+    path: '/AudicaStats',
     file: 'event-recordings/audica.txt'
+  },
+  synth: {
+    port: 9000,
+    path: '/',
+    file: 'event-recordings/synth.txt'
   }
 };
 
@@ -65,6 +71,24 @@ const serve = (game, file = "", delay = false) => {
   });
 }
 
+const record = (game, websocket_host, file = "") => {
+  const outputFile = file ? file : 'event-recordings/' + game + '-' + Date.now() + '.txt';
+  const wsUrl = 'ws://' + (websocket_host ? websocket_host : 'localhost') + ':' + gameConfigs[game].port + gameConfigs[game].path;
+  console.log(wsUrl);
+  const ws = new WebSocket(wsUrl);
+  ws.on('connection', () => {
+    console.log('Connected.  Press Ctrl-C to end recording.');
+  });
+
+  ws.on('error', (error) => {
+    console.log('Error connecting: ' + error.code + ' ' + error.toString());
+  });
+  ws.on('message', (message) => {
+    fs.appendFileSync(outputFile, Date.now() + " " + message + "\n");
+    console.log(message);
+  });
+};
+
 const argv = yargs(process.argv.slice(2))
   .command('serve <game>', 'Serve game content', (yargs) => {
     yargs
@@ -86,4 +110,23 @@ const argv = yargs(process.argv.slice(2))
       );
   },(argv) => {
     serve(argv.game, argv.file, argv.delay);
-  }).help().argv;
+  })
+  .command('record <game>', 'Record websocket events from a game', (yargs) => {
+    yargs
+      .positional('game', {
+        describe: "Game to emulate.",
+        type: 'string',
+        choices: ['audica','synth','boombox','audiotrip','saber']
+      })
+      .option('host', {
+        describe: 'Host to connect to.  Default is localhost',
+        type: 'string'
+      })
+      .option('file', {
+        describe: 'File name to write output to.',
+        type: 'string'
+      });
+  }, (argv) => {
+    record(argv.game, argv.host, argv.file);
+  })
+  .help().argv;
