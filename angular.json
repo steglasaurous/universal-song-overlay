@@ -28,12 +28,20 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/Caddyfile",
-              "src/start_webserver.bat",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/themes/default.scss",
+                "bundleName": "default",
+                "inject": false
+              },
+              {
+                "input": "src/themes/sulfur.scss",
+                "bundleName": "sulfur",
+                "inject": false
+              }
             ],
             "scripts": []
           },

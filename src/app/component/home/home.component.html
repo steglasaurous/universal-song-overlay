@@ -1,8 +1,7 @@
 <div [hidden]="gameState.title == ''">
   <app-song-details
     [hidden]="!supportedComponents.songDetails || enabledComponents.indexOf('song-details') < 0"
-    [gameState]="(gameState$ | async) || gameState"
-    [ngClass]="{'m-fadeOut': gameState.title == '', 'm-fadeIn': gameState.title != ''}"></app-song-details>
+    [gameState]="(gameState$ | async) || gameState"></app-song-details>
   <app-song-status
     [hidden]="!supportedComponents.songStatus || enabledComponents.indexOf('song-status') < 0"
     [gameState]="(gameState$ | async) || gameState">

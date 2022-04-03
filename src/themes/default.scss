@@ -1,0 +1,150 @@
+/**
+ * Default theme
+ */
+
+body {
+  background: rgba(0,0,0,1);
+
+  /* This sets the default font and color for the entire overlay. */
+  font-family: "EB Garamond", serif;
+  color: white;
+}
+
+/* Song Details component */
+.songDetails {
+  /* This makes a translucent background on the song block.
+   * Adjust the last number to change how translucent it is.
+   * Comment out the line below to remove it */
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  padding: 10px;
+  width: fit-content;
+
+  .songInfo {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-size: 48px;
+    }
+
+    .artist {
+      font-size: 32px;
+    }
+
+    .mapper {
+      font-size: 32px;
+    }
+
+    /* This is the label beside the mapper name */
+    .mapperLabel {
+      text-transform: uppercase;
+      color: grey;
+    }
+
+    .difficulty {
+      font-size: 24px;
+    }
+
+
+    .albumArt img {
+      max-width: 190px;
+      margin-right: 10px;
+    }
+  }
+}
+
+/** Song Progress component **/
+.songProgress {
+  padding: 10px;
+
+  /* For styling the progress bar */
+  .progress {
+    max-width: 190px;
+    margin-bottom: 1px;
+  }
+
+  .songTime {
+    font-size: 20pt;
+  }
+}
+
+/** Score Component **/
+.scores {
+  margin-left: 10px;
+  padding-bottom: 10px;
+
+  /* The labels for scoring like "SCORE" and "PERSONAL BEST" */
+  .fieldLabel {
+    text-transform: uppercase;
+    font-size: 12pt;
+  }
+
+  .scoreAndMultiplier {
+    font-size: 24pt;
+    display: flex;
+
+    .newHighScore {
+      color: greenyellow;
+    }
+  }
+
+  .personalBestScoreContainer {
+    font-size: 24pt;
+  }
+  .scoreMultiplier {
+    background-color: white;
+    border-radius: 100px;
+    width: 50px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: black;
+    font-size: 30px;
+    margin-left: 30px;
+  }
+
+}
+
+
+/** Player Health component */
+.playerHealth {
+  margin-left: 10px;
+
+  .fieldLabel {
+    text-transform: uppercase;
+    font-size: 12pt;
+  }
+
+  .progress {
+    max-width: 190px;
+    margin-bottom: 1px;
+  }
+
+  /* When health is > 75%, use this color. */
+  .playerHealthGood {
+    background-color: green;
+  }
+  /* When health is > 40%, but < 75% */
+  .playerHealthWarning {
+    background-color: yellow;
+  }
+  /* When health is < 40% */
+  .playerHealthCritical {
+    background-color: red;
+  }
+}
+
+
+
+//.m-fadeOut {
+//  visibility: hidden;
+//  opacity: 0;
+//  transition: visibility 0s linear 300ms, opacity 1000ms;
+//}
+//.m-fadeIn {
+//  visibility: visible;
+//  opacity: 1;
+//  transition: visibility 0s linear 0s, opacity 1000ms;
+//}

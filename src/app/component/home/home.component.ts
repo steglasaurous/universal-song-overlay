@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {selectGameStateFeature} from "../../state/gamestate.selectors";
 import {selectSupportedComponentsFeature} from "../../state/supported-components.selectors";
 import {GameStateModel} from "../../model/game-state.model";
@@ -7,15 +7,8 @@ import {SupportedComponentsModel} from "../../model/supported-components.model";
 import {supportedComponentsInitialState} from "../../state/supported-components.reducer";
 import {Store} from "@ngrx/store";
 import {GameDataServiceManager} from "../../service/game-data-service-manager";
-import {
-  clearAll,
-  setHighScore,
-  updatePlayerHealth,
-  updateScore,
-  updateSongDetails,
-  updateSongPosition
-} from "../../state/gamestate.actions";
 import {ActivatedRoute} from "@angular/router";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'app-home',
@@ -38,7 +31,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private store: Store,
     private gameDataServiceManager: GameDataServiceManager,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document
   ) {
     const overrideWebsocketHost: string = this.route.snapshot.queryParamMap.get('websocket_host') ?? "";
 
@@ -66,33 +60,27 @@ export class HomeComponent implements OnInit {
     this.gameDataServiceManager.connect();
   }
 
-  testUpdate() {
-    this.store.dispatch(updateSongDetails({
-      title: "Test Title",
-      artist: "Test artist",
-      songLength: 123,
-      mapper: "Abc",
-      difficulty: "Master",
-      extraText: "AAAA",
-      albumArt: "https://synthriderz.com/api/beatmaps/4635/cover?v=1&size=250"
-    }));
+  loadStyle(styleName: string) {
+    const head = this.document.getElementsByTagName('head')[0];
 
-    this.store.dispatch(updateSongPosition(
-      {
-        songPosition: 60
-      }
-    ));
+    let themeLink = this.document.getElementById(
+      'client-theme'
+    ) as HTMLLinkElement;
+    if (themeLink) {
+      themeLink.href = styleName;
+    } else {
+      const style = this.document.createElement('link');
+      style.id = 'client-theme';
+      style.rel = 'stylesheet';
+      style.href = `${styleName}`;
 
-    this.store.dispatch(setHighScore({ highScore: 1024372}));
-    this.store.dispatch(updateScore({ score: 123456, combo: 22, multiplier: 2}));
-    this.store.dispatch(updatePlayerHealth({ playerHealth: 89 }));
-  }
-
-  testClear() {
-    this.store.dispatch(clearAll());
+      head.appendChild(style);
+    }
   }
 
   ngOnInit(): void {
-  }
+    const theme = this.route.snapshot.queryParamMap.get('theme') ?? 'default';
 
+    this.loadStyle(theme + '.css');
+  }
 }
