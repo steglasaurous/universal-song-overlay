@@ -1,4 +1,4 @@
-<div [hidden]="gameState.title == ''">
+<div [hidden]="gameState.title == ''" class="appContainer">
   <app-song-details
     [hidden]="!supportedComponents.songDetails || enabledComponents.indexOf('song-details') < 0"
     [gameState]="(gameState$ | async) || gameState"></app-song-details>

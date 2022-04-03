@@ -41,6 +41,21 @@
                 "input": "src/themes/sulfur.scss",
                 "bundleName": "sulfur",
                 "inject": false
+              },
+              {
+                "input": "src/themes/modifiers/align-right.scss",
+                "bundleName": "align-right",
+                "inject": false
+              },
+              {
+                "input": "src/themes/modifiers/stretch-song-progress-bar.scss",
+                "bundleName": "stretch-song-progress-bar",
+                "inject": false
+              },
+              {
+                "input": "src/themes/modifiers/stretch-health-progress-bar.scss",
+                "bundleName": "stretch-health-progress-bar",
+                "inject": false
               }
             ],
             "scripts": []

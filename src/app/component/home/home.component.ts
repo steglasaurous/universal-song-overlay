@@ -63,24 +63,20 @@ export class HomeComponent implements OnInit {
   loadStyle(styleName: string) {
     const head = this.document.getElementsByTagName('head')[0];
 
-    let themeLink = this.document.getElementById(
-      'client-theme'
-    ) as HTMLLinkElement;
-    if (themeLink) {
-      themeLink.href = styleName;
-    } else {
-      const style = this.document.createElement('link');
-      style.id = 'client-theme';
-      style.rel = 'stylesheet';
-      style.href = `${styleName}`;
+    const style = this.document.createElement('link');
+    style.id = 'theme-' + styleName;
+    style.rel = 'stylesheet';
+    style.href = `${styleName}`;
 
-      head.appendChild(style);
-    }
+    head.appendChild(style);
   }
 
   ngOnInit(): void {
     const theme = this.route.snapshot.queryParamMap.get('theme') ?? 'default';
+    const themeList = theme.split(',');
 
-    this.loadStyle(theme + '.css');
+    themeList.forEach((themeName) => {
+      this.loadStyle(themeName + '.css');
+    });
   }
 }

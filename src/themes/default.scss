@@ -10,6 +10,12 @@ body {
   color: white;
 }
 
+.appContainer {
+  /* For setting styles global to the overlay that don't quite fit in the body tag above (ex: aligning elements to the right) */
+  display: flex;
+  flex-direction: column;
+}
+
 /* Song Details component */
 .songDetails {
   /* This makes a translucent background on the song block.
@@ -61,7 +67,7 @@ body {
 
   /* For styling the progress bar */
   .progress {
-    max-width: 190px;
+    width: 190px;
     margin-bottom: 1px;
   }
 
@@ -72,8 +78,7 @@ body {
 
 /** Score Component **/
 .scores {
-  margin-left: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
 
   /* The labels for scoring like "SCORE" and "PERSONAL BEST" */
   .fieldLabel {
@@ -110,7 +115,7 @@ body {
 
 /** Player Health component */
 .playerHealth {
-  margin-left: 10px;
+  padding: 10px;
 
   .fieldLabel {
     text-transform: uppercase;
@@ -118,7 +123,7 @@ body {
   }
 
   .progress {
-    max-width: 190px;
+    width: 190px;
     margin-bottom: 1px;
   }
 
