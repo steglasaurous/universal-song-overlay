@@ -210,6 +210,10 @@ To start a development server: `npx ng serve`.  This will start a webserver at h
 To build a production-ready release: `npm run build`.  This will place the build output in dist.  Note that a postbuild script
 runs after the build finishes to copy the script contents into the html itself to support running without a webserver.
 
+## Test Server
+
+A test websocket server is available.  See [test-websocket-server/README.md](test-websocket-server/README.md) for more details.
+
 ## Creating themes
 
 Themes are SCSS files that live in `src/themes`.  
