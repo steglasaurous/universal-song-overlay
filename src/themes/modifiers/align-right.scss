@@ -1,0 +1,42 @@
+/* This meant to be applied on top of a theme to align everything to the right */
+.appContainer {
+  text-align: right;
+  align-items:flex-end;
+}
+
+.songDetails {
+  flex-direction: row-reverse;
+  justify-content: start;
+
+  .songInfo {
+    padding-right: 10px;
+  }
+}
+
+.songProgress {
+
+  .progress {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+.scores {
+  //text-align: right;
+  .scoreAndMultiplier {
+    flex-direction: row-reverse;
+
+    .scoreMultiplier {
+      margin-right: 10px;
+    }
+  }
+}
+
+.playerHealth {
+  .progress {
+    margin-left: auto;
+    margin-right: 0;
+
+  }
+  //text-align: right;
+}

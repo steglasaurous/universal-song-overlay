@@ -1,4 +1,5 @@
-<div class="songProgress">
+<div class="songProgress"
+     [ngClass]="{ 'show': gameState.title != '' }">
   <ngb-progressbar
     class="song-progress-bar"
     [max]="100"

@@ -3,5 +3,6 @@ export interface SupportedComponentsModel {
   songStatus: boolean,
   playerHealth: boolean,
   score: boolean,
-  highScore: boolean
+  highScore: boolean,
+  combo: boolean
 }

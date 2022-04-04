@@ -1,23 +1,45 @@
-import {GameDataServiceInterface} from "./game-data-service.interface";
 import {SynthRidersGameDataService} from "./synth-riders-game-data.service";
 import {Store} from "@ngrx/store";
 import {Injectable} from "@angular/core";
 import {AudicaGameDataService} from "./audica-game-data.service";
+import {AbstractGameDataService} from "./abstract-game-data.service";
+import {BoomboxGameDataService} from "./boombox-game-data.service";
+import {AudioTripGameDataService} from "./audio-trip-game-data.service";
+import {BeatSaberMapGameDataService} from "./beat-saber-map-game-data.service";
+import {BeatSaberLiveGameDataService} from "./beat-saber-live-game-data.service";
 
 @Injectable()
 export class GameDataServiceManager {
-  private gameDataServices:  GameDataServiceInterface[] = [];
+  private gameDataServices:  AbstractGameDataService[] = [];
 
   constructor(
     private store: Store,
     synthRidersGameDataService: SynthRidersGameDataService,
-    audicaGameDataService: AudicaGameDataService
+    audicaGameDataService: AudicaGameDataService,
+    boomboxGameDataService: BoomboxGameDataService,
+    audioTripGameDataService: AudioTripGameDataService,
+    beatSaberMapGameDataService: BeatSaberMapGameDataService,
+    beatSaberLiveGameDataService: BeatSaberLiveGameDataService
   ) {
     this.gameDataServices.push(
       synthRidersGameDataService,
-      audicaGameDataService
+      audicaGameDataService,
+      boomboxGameDataService,
+      beatSaberMapGameDataService,
+      beatSaberLiveGameDataService,
+      audioTripGameDataService
     );
   }
 
+  public setWebsocketHost(host: string) {
+    this.gameDataServices.forEach((gameDataService: AbstractGameDataService) => {
+      gameDataService.setHost(host);
+    });
+  }
 
+  public connect() {
+    this.gameDataServices.forEach((gameDataService: AbstractGameDataService) => {
+      gameDataService.connect();
+    });
+  }
 }

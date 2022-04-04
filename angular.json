@@ -28,12 +28,35 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/Caddyfile",
-              "src/start_webserver.bat",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/themes/default.scss",
+                "bundleName": "default",
+                "inject": false
+              },
+              {
+                "input": "src/themes/sulfur.scss",
+                "bundleName": "sulfur",
+                "inject": false
+              },
+              {
+                "input": "src/themes/modifiers/align-right.scss",
+                "bundleName": "align-right",
+                "inject": false
+              },
+              {
+                "input": "src/themes/modifiers/stretch-song-progress-bar.scss",
+                "bundleName": "stretch-song-progress-bar",
+                "inject": false
+              },
+              {
+                "input": "src/themes/modifiers/stretch-health-progress-bar.scss",
+                "bundleName": "stretch-health-progress-bar",
+                "inject": false
+              }
             ],
             "scripts": []
           },

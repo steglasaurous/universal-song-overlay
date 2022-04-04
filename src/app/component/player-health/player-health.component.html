@@ -1,4 +1,6 @@
-<div class="playerHealth">
+<div class="playerHealth"
+     [ngClass]="{ 'show': gameState.title != '' }">
+  <div class="fieldLabel">Health</div>
   <ngb-progressbar #playerHealthBar
     class="playerHealthBar"
     [max]="100"

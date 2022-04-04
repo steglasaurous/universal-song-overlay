@@ -1,10 +1,11 @@
-<div class="songBlock">
+<div class="songDetails"
+     [ngClass]="{ 'show': gameState.title != '' }">
   <div class="albumArt">
     <img class="albumArtImage" [src]="gameState.albumArt"/>
   </div>
   <div class="songInfo">
     <div class="title">{{ gameState.title }}</div>
-    <div><span class="artist">{{ gameState.artist}}</span></div>
+    <div class="artist">{{ gameState.artist}}</div>
     <div class="mapperContainer"><span class="mapper">{{ gameState.mapper }}</span> <span
       class="mapperLabel">Mapper</span></div>
     <div class="difficulty">{{ gameState.difficulty }}</div>

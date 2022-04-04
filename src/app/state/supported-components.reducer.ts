@@ -7,30 +7,21 @@ export const supportedComponentsInitialState: SupportedComponentsModel = {
   score: false,
   songStatus: false,
   highScore: false,
-  songDetails: false
+  songDetails: false,
+  combo: false
 }
 
 export const supportedComponentsReducer = createReducer(
   supportedComponentsInitialState,
-  on(updateSupportedComponents, (state: SupportedComponentsModel, { playerHealth, score, songStatus, highScore, songDetails }): SupportedComponentsModel => {
-
-    let newState = {
-      ...state,
-      playerHealth: playerHealth,
-      score: score,
-      songStatus: songStatus,
-      highScore: highScore,
-      songDetails: songDetails
-    };
-    console.log("reducer");
-    console.log(newState);
+  on(updateSupportedComponents, (state: SupportedComponentsModel, { playerHealth, score, songStatus, highScore, songDetails, combo }): SupportedComponentsModel => {
     return {
       ...state,
       playerHealth: playerHealth,
       score: score,
       songStatus: songStatus,
       highScore: highScore,
-      songDetails: songDetails
+      songDetails: songDetails,
+      combo: combo
     }
   })
 );

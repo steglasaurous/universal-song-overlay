@@ -1,0 +1,21 @@
+@import 'default.scss';
+
+body {
+  color: rgb(212, 177, 252);
+}
+
+.songDetails {
+  background-color: inherit;
+}
+
+.songProgress {
+  .progress-bar {
+    background-color: #69cdb3;
+  }
+}
+
+.playerHealth {
+  .progress-bar {
+    background-color: #69cdb3;
+  }
+}
