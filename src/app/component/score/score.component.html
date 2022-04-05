@@ -1,5 +1,5 @@
 <div class="scores"
-     [ngClass]="{ 'show': gameState.title != '' }">
+     [ngClass]="{ 'show': isVisible, 'hide': !isVisible }">
   <div class="scoreContainer">
     <div class="fieldLabel">Score</div>
     <div class="scoreAndMultiplier">

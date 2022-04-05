@@ -1,19 +1,23 @@
 <div [hidden]="gameState.title == ''" class="appContainer">
   <app-song-details
     [hidden]="!supportedComponents.songDetails || enabledComponents.indexOf('song-details') < 0"
+    [isVisible]="(isVisible$ | async) || false"
     [gameState]="(gameState$ | async) || gameState"></app-song-details>
   <app-song-status
     [hidden]="!supportedComponents.songStatus || enabledComponents.indexOf('song-status') < 0"
+    [isVisible]="(isVisible$ | async) || false"
     [gameState]="(gameState$ | async) || gameState">
   </app-song-status>
   <app-score
     [hidden]="!supportedComponents.score || enabledComponents.indexOf('score') < 0"
+    [isVisible]="(isVisible$ | async) || false"
     [gameState]="(gameState$ | async) || gameState"
     [showHighScore]="supportedComponents.highScore"
     [showCombo]="supportedComponents.combo">
   </app-score>
   <app-player-health
     [hidden]="!supportedComponents.playerHealth || enabledComponents.indexOf('player-health') < 0"
+    [isVisible]="(isVisible$ | async) || false"
     [gameState]="(gameState$ | async) || gameState">
   </app-player-health>
 </div>

@@ -8,6 +8,7 @@ import {
   updateSongPosition
 } from "../state/gamestate.actions";
 import {AbstractGameDataService} from "./abstract-game-data.service";
+import {setVisible} from "../state/visible.actions";
 
 export class BeatSaberMapGameDataService extends AbstractGameDataService
 {
@@ -51,8 +52,9 @@ export class BeatSaberMapGameDataService extends AbstractGameDataService
         albumArt: data.coverImage ?? ""
       }));
       this.store.dispatch(setHighScore({ highScore: data.PreviousRecord }));
+      this.store.dispatch(setVisible());
     } else if (data.SongName === "") {
-      this.store.dispatch(clearAll());
+      this.hideAndClearGameState();
     }
   }
 }
