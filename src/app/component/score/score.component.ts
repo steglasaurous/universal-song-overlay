@@ -18,6 +18,9 @@ export class ScoreComponent implements OnInit {
   @Input()
   showCombo: boolean = true;
 
+  @Input()
+  isVisible: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

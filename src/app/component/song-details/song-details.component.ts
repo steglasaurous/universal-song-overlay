@@ -12,6 +12,9 @@ export class SongDetailsComponent implements OnInit {
   @Input()
   gameState: GameStateModel = initialState;
 
+  @Input()
+  isVisible: boolean = false;
+
   constructor() {
 
   }

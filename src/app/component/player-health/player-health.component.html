@@ -1,5 +1,5 @@
 <div class="playerHealth"
-     [ngClass]="{ 'show': gameState.title != '' }">
+     [ngClass]="{ 'show': isVisible, 'hide': !isVisible }">
   <div class="fieldLabel">Health</div>
   <ngb-progressbar #playerHealthBar
     class="playerHealthBar"

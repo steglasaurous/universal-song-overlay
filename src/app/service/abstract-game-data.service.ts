@@ -6,6 +6,8 @@ import {WebsocketService} from "./websocket.service";
 import {clearConnectedGame, setConnectedGame} from "../state/connected-game.actions";
 import {updateSupportedComponents} from "../state/supported-components.actions";
 import {tap} from "rxjs";
+import {setHidden} from "../state/visible.actions";
+import {clearAll} from "../state/gamestate.actions";
 
 export abstract class AbstractGameDataService {
   // Make this an array of websocket services?
@@ -64,6 +66,12 @@ export abstract class AbstractGameDataService {
     this.host = host;
     this.websocketService.setHost(host);
   }
+
+  protected hideAndClearGameState() {
+    this.store.dispatch(setHidden());
+    setTimeout(() => { this.store.dispatch(clearAll())}, 4000);
+  }
+
   abstract supports(): SupportedComponentsModel;
 
   abstract getGameName(): string;

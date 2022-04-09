@@ -21,6 +21,7 @@ import {BeatSaberMapGameDataService} from "./service/beat-saber-map-game-data.se
 import {BeatSaberLiveGameDataService} from "./service/beat-saber-live-game-data.service";
 import {RouterModule, Routes} from "@angular/router";
 import { HomeComponent } from './component/home/home.component';
+import {visibleReducer} from "./state/visible.reducer";
 
 const routes: Routes =[
   { path: "", component: HomeComponent}
@@ -40,7 +41,8 @@ const routes: Routes =[
     StoreModule.forRoot({
       gameState: gameStateReducer,
       supportedComponents: supportedComponentsReducer,
-      connectedGame: connectedGameReducer
+      connectedGame: connectedGameReducer,
+      isVisible: visibleReducer
     }, {}),
     NgbModule,
     // NOTE: Using the hash strategy for routing so that this app will work when loaded directly as a file (for 2-pc stream setups)

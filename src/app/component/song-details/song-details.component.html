@@ -1,5 +1,5 @@
 <div class="songDetails"
-     [ngClass]="{ 'show': gameState.title != '' }">
+     [ngClass]="{ 'show': isVisible, 'hide': !isVisible }">
   <div class="albumArt">
     <img class="albumArtImage" [src]="gameState.albumArt"/>
   </div>

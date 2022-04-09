@@ -1,13 +1,13 @@
 import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {
-  clearAll,
   updatePlayerHealth,
   updateScore,
   updateSongDetails,
   updateSongPosition
 } from "../state/gamestate.actions";
 import {AbstractGameDataService} from "./abstract-game-data.service";
+import {setVisible} from "../state/visible.actions";
 
 export class SynthRidersGameDataService extends AbstractGameDataService
 {
@@ -51,6 +51,7 @@ export class SynthRidersGameDataService extends AbstractGameDataService
           extraText: "",
           albumArt: data.data.albumArt ?? null
         }));
+        this.store.dispatch(setVisible());
 
         break;
       case "PlayTime":
@@ -78,11 +79,11 @@ export class SynthRidersGameDataService extends AbstractGameDataService
         }));
         break;
       case "ReturnToMenu":
-        this.store.dispatch(clearAll());
+        this.hideAndClearGameState();
         break;
       case "SceneChange":
         if (data.data.sceneName == '3.GameEnd') {
-          this.store.dispatch(clearAll());
+          this.hideAndClearGameState();
         }
         break;
     }

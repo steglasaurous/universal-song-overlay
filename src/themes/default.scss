@@ -1,6 +1,7 @@
 /**
  * Default theme
  */
+@import 'animate.css';
 
 body {
   background: rgba(0,0,0,1);
@@ -17,6 +18,35 @@ body {
 }
 
 /* Song Details component */
+.show {
+  animation: backInLeft;
+  animation-duration: 1s;
+}
+
+.hide {
+  animation: backOutLeft;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.songProgress.show {
+  opacity: 0;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+}
+
+.scores.show {
+  opacity: 0;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.playerHealth.show {
+  opacity: 0;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+}
+
 .songDetails {
   /* This makes a translucent background on the song block.
    * Adjust the last number to change how translucent it is.
@@ -62,6 +92,7 @@ body {
 
 /** Song Progress component **/
 .songProgress {
+  width: fit-content;
   padding: 10px;
 
   /* For styling the progress bar */
@@ -78,7 +109,7 @@ body {
 /** Score Component **/
 .scores {
   padding: 10px;
-
+  width: fit-content;
   /* The labels for scoring like "SCORE" and "PERSONAL BEST" */
   .fieldLabel {
     text-transform: uppercase;
@@ -111,10 +142,10 @@ body {
 
 }
 
-
 /** Player Health component */
 .playerHealth {
   padding: 10px;
+  width: fit-content;
 
   .fieldLabel {
     text-transform: uppercase;

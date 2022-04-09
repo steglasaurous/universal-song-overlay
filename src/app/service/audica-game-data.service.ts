@@ -8,6 +8,7 @@ import {
 import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {AbstractGameDataService} from "./abstract-game-data.service";
+import {setVisible} from "../state/visible.actions";
 
 export class AudicaGameDataService extends AbstractGameDataService {
 
@@ -52,6 +53,7 @@ export class AudicaGameDataService extends AbstractGameDataService {
           extraText: "",
           albumArt: data.data.albumArtData ? 'data:image/png;base64,' + data.data.albumArtData : ""
         }));
+        this.store.dispatch(setVisible());
 
         break;
       case "SongProgress":
@@ -75,7 +77,7 @@ export class AudicaGameDataService extends AbstractGameDataService {
         }));
         break;
       case "ReturnToSongList":
-        this.store.dispatch(clearAll());
+        this.hideAndClearGameState();
         break;
     }
   }

@@ -9,6 +9,7 @@ import {Store} from "@ngrx/store";
 import {GameDataServiceManager} from "../../service/game-data-service-manager";
 import {ActivatedRoute} from "@angular/router";
 import {DOCUMENT} from "@angular/common";
+import {selectVisible} from "../../state/visible.selectors";
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
 
   gameState$ = this.store.select(selectGameStateFeature);
   supportedComponents$ = this.store.select(selectSupportedComponentsFeature);
+  isVisible$ = this.store.select(selectVisible);
 
   // Used to get around the async directive signature possibly returning null.
   // Not sure if it negates the observable or not?

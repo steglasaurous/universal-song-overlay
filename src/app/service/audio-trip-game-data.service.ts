@@ -11,6 +11,7 @@ import {AbstractGameDataService} from "./abstract-game-data.service";
 import {selectGameStateFeature} from "../state/gamestate.selectors";
 import {GameStateModel} from "../model/game-state.model";
 import {initialState} from "../state/gamestate.reducer";
+import {setVisible} from "../state/visible.actions";
 
 export class AudioTripGameDataService extends AbstractGameDataService
 {
@@ -67,6 +68,7 @@ export class AudioTripGameDataService extends AbstractGameDataService
           extraText: "",
           albumArt: ""
         }));
+        this.store.dispatch(setVisible());
       }
 
       this.store.dispatch(updateSongPosition({
@@ -85,7 +87,7 @@ export class AudioTripGameDataService extends AbstractGameDataService
       }
     } else if (data.inSong === false) {
       if (this.gameState.title) {
-        this.store.dispatch(clearAll());
+        this.hideAndClearGameState();
       }
     }
   }

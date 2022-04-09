@@ -12,6 +12,9 @@ export class SongStatusComponent implements OnInit {
   @Input()
   gameState: GameStateModel = initialState;
 
+  @Input()
+  isVisible: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

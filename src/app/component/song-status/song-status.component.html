@@ -1,5 +1,5 @@
 <div class="songProgress"
-     [ngClass]="{ 'show': gameState.title != '' }">
+     [ngClass]="{ 'show': isVisible, 'hide': !isVisible }">
   <ngb-progressbar
     class="song-progress-bar"
     [max]="100"
