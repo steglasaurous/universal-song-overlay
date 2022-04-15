@@ -22,6 +22,8 @@ import {BeatSaberLiveGameDataService} from "./service/beat-saber-live-game-data.
 import {RouterModule, Routes} from "@angular/router";
 import { HomeComponent } from './component/home/home.component';
 import {visibleReducer} from "./state/visible.reducer";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 const routes: Routes =[
   { path: "", component: HomeComponent}
@@ -36,18 +38,20 @@ const routes: Routes =[
     PlayerHealthComponent,
     HomeComponent
   ],
-  imports: [
-    BrowserModule,
-    StoreModule.forRoot({
-      gameState: gameStateReducer,
-      supportedComponents: supportedComponentsReducer,
-      connectedGame: connectedGameReducer,
-      isVisible: visibleReducer
-    }, {}),
-    NgbModule,
-    // NOTE: Using the hash strategy for routing so that this app will work when loaded directly as a file (for 2-pc stream setups)
-    RouterModule.forRoot(routes, { useHash: true })
-  ],
+    imports: [
+        BrowserModule,
+        StoreModule.forRoot({
+            gameState: gameStateReducer,
+            supportedComponents: supportedComponentsReducer,
+            connectedGame: connectedGameReducer,
+            isVisible: visibleReducer
+        }, {}),
+        NgbModule,
+        // NOTE: Using the hash strategy for routing so that this app will work when loaded directly as a file (for 2-pc stream setups)
+        RouterModule.forRoot(routes, {useHash: true}),
+        BrowserAnimationsModule,
+        MatProgressSpinnerModule
+    ],
   providers: [
     {
       provide: SynthRidersGameDataService, useFactory: GameDataServiceFactory(SynthRidersGameDataService.name), deps: [ Store ]

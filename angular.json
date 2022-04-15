@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               {
                 "input": "src/themes/default.scss",
@@ -43,8 +44,18 @@
                 "inject": false
               },
               {
+                "input": "src/themes/ecko.scss",
+                "bundleName": "ecko",
+                "inject": false
+              },
+              {
                 "input": "src/themes/modifiers/align-right.scss",
                 "bundleName": "align-right",
+                "inject": false
+              },
+              {
+                "input": "src/themes/modifiers/align-bottom.scss",
+                "bundleName": "align-bottom",
                 "inject": false
               },
               {
@@ -124,6 +135,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []

@@ -1,7 +1,10 @@
 <div class="songDetails"
      [ngClass]="{ 'show': isVisible, 'hide': !isVisible }">
-  <div class="albumArt">
-    <img class="albumArtImage" [src]="gameState.albumArt"/>
+  <div class="albumArt" [ngStyle]="{'background-image': 'url(' + gameState.albumArt + ')'}">
+    <div class="spinner-wrapper">
+      <mat-progress-spinner mode="determinate" [value]="songPercentComplete" [strokeWidth]="6"></mat-progress-spinner>
+      <div class="songPosition">{{ gameState.songPosition * 1000 | date:'m:ss' }}</div>
+    </div>
   </div>
   <div class="songInfo">
     <div class="title">{{ gameState.title }}</div>
