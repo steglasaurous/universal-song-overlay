@@ -1,23 +1,2 @@
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
-
-body {
-  background: rgba(0,0,0,1);
-
-  /* This sets the default font and color for the entire overlay. */
-  font-family: "EB Garamond", serif;
-  color: white;
-}
-
-.m-fadeOut {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 300ms, opacity 1000ms;
-}
-.m-fadeIn {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s linear 0s, opacity 1000ms;
-}
-
-
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

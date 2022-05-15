@@ -1,0 +1,71 @@
+/**
+ * Ecko theme (based on BeatSaber overlay design)
+ */
+@import 'default.scss';
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.appContainer {
+  /* For setting styles global to the overlay that don't quite fit in the body tag above (ex: aligning elements to the right) */
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.songDetails {
+  .songInfo {
+    .title {
+      font-weight: bold;
+    }
+  }
+}
+
+/** Score Component **/
+.scores {
+  .scoreContainer {
+    flex-direction: column-reverse;
+
+    .fieldLabel {
+      display: none;
+    }
+
+    .scoreAndMultiplier {
+      margin-top: 10px;
+
+      .currentScore {
+        font-weight: bold;
+      }
+    }
+
+    .combo {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      .comboFieldLabel {
+        padding-left: 10px;
+        text-transform: uppercase;
+      }
+
+      .comboValue {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .personalBestScoreContainer {
+    display: none;
+  }
+}
+
+.songDetails {
+  .albumArt {
+    .spinner-wrapper {
+      display: block;
+    }
+  }
+}

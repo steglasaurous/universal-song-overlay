@@ -22,4 +22,11 @@ export class SongDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get songPercentComplete() {
+    if (this.gameState.songLength > 0) {
+      return Math.floor(this.gameState.songPosition / this.gameState.songLength * 100);
+    }
+
+    return 0;
+  }
 }
