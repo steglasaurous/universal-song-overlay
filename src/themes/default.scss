@@ -72,6 +72,7 @@ body {
     justify-content: center;
 
     .spinner-wrapper {
+      display: none; /* Disabled by default, but stylings left in place so a theme can simply 'enable' it. */
       position: relative;
 
       .mat-progress-spinner {
@@ -198,7 +199,7 @@ body {
 
       .comboFieldLabel {
         width: fit-content;
-        text-transform: uppercase;
+        //text-transform: uppercase;
         padding-right: 10px;
       }
 

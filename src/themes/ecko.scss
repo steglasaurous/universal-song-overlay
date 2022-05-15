@@ -47,6 +47,7 @@ body {
 
       .comboFieldLabel {
         padding-left: 10px;
+        text-transform: uppercase;
       }
 
       .comboValue {
@@ -61,3 +62,10 @@ body {
   }
 }
 
+.songDetails {
+  .albumArt {
+    .spinner-wrapper {
+      display: block;
+    }
+  }
+}
