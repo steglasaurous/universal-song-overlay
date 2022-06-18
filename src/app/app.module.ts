@@ -24,6 +24,7 @@ import { HomeComponent } from './component/home/home.component';
 import {visibleReducer} from "./state/visible.reducer";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {BeatSaberPlusGameDataService} from "./service/beat-saber-plus-game-data.service";
 
 const routes: Routes =[
   { path: "", component: HomeComponent}
@@ -70,6 +71,9 @@ const routes: Routes =[
     },
     {
       provide: BeatSaberLiveGameDataService, useFactory: GameDataServiceFactory(BeatSaberLiveGameDataService.name), deps: [ Store ]
+    },
+    {
+      provide: BeatSaberPlusGameDataService, useFactory: GameDataServiceFactory(BeatSaberPlusGameDataService.name), deps: [ Store ]
     },
     GameDataServiceManager
   ],
