@@ -5,6 +5,7 @@ import {BoomboxGameDataService} from "./boombox-game-data.service";
 import {AudioTripGameDataService} from "./audio-trip-game-data.service";
 import {BeatSaberMapGameDataService} from "./beat-saber-map-game-data.service";
 import {BeatSaberLiveGameDataService} from "./beat-saber-live-game-data.service";
+import {BeatSaberPlusGameDataService} from "./beat-saber-plus-game-data.service";
 export const GameDataServiceFactory = (gameName: string, host: string = 'localhost') => {
   switch (gameName) {
     case SynthRidersGameDataService.name:
@@ -30,6 +31,10 @@ export const GameDataServiceFactory = (gameName: string, host: string = 'localho
     case BeatSaberLiveGameDataService.name:
       return (store: Store) => {
         return new BeatSaberLiveGameDataService(store, host);
+      }
+    case BeatSaberPlusGameDataService.name:
+      return (store: Store) => {
+        return new BeatSaberPlusGameDataService(store, host);
       }
   }
 
