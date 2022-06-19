@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   // https://stackoverflow.com/questions/61780339/angular-ivy-stricttemplates-true-type-boolean-null-is-not-assignable-to-type
   gameState: GameStateModel = initialState;
   supportedComponents: SupportedComponentsModel = supportedComponentsInitialState;
-  enabledComponents: string[] = ['song-details','song-status','score','player-health'];
+  enabledComponents: string[] = ['song-details', 'album-art', 'song-status', 'score', 'player-health'];
 
   constructor(
     private store: Store,

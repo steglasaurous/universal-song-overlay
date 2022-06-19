@@ -15,6 +15,9 @@ export class SongDetailsComponent implements OnInit {
   @Input()
   isVisible: boolean = false;
 
+  @Input()
+  isAlbumArtVisible: boolean = true;
+
   constructor() {
 
   }
