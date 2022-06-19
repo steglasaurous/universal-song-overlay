@@ -19,6 +19,9 @@ export class BeatSaberPlusGameDataService extends AbstractGameDataService {
   }
 
   override processMessage(data: any): void {
+    // FIXME: Song progress isn't reported regularly by the server, just playing, pause and resume events.  Sounds like
+    //        it's up to me to 'fake' the progress via timers.
+
     if (data._event) {
       switch (data._event) {
         case "gameState":
