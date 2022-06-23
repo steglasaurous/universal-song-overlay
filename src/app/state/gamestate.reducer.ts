@@ -1,7 +1,7 @@
 import {GameStateModel} from "../model/game-state.model";
 import {createReducer, on} from "@ngrx/store";
 import {
-  clearAll,
+  clearAll, incrementSongPosition,
   setHighScore,
   updatePlayerHealth,
   updateScore,
@@ -69,6 +69,12 @@ export const gameStateReducer = createReducer(
     return {
       ...state,
       playerHealth: playerHealth
+    }
+  }),
+  on(incrementSongPosition, (state: GameStateModel, { }): GameStateModel => {
+    return {
+      ...state,
+      songPosition: state.songPosition + 1
     }
   })
 );
