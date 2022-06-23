@@ -45,3 +45,7 @@ export const updatePlayerHealth = createAction(
     playerHealth: number
   }>()
 );
+
+export const incrementSongPosition = createAction(
+  '[Update song position]'
+);
