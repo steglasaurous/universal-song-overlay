@@ -1,5 +1,5 @@
 import {
-  clearAll, setHighScore,
+  setHighScore,
   updatePlayerHealth,
   updateScore,
   updateSongDetails,
@@ -32,7 +32,8 @@ export class AudicaGameDataService extends AbstractGameDataService {
       playerHealth: true,
       score: true,
       highScore: true,
-      combo: true
+      combo: true,
+      multiplier: true
     };
   }
 

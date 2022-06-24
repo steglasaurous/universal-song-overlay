@@ -31,7 +31,8 @@ export class SynthRidersGameDataService extends AbstractGameDataService
       playerHealth: true,
       score: true,
       highScore: false,
-      combo: true
+      combo: true,
+      multiplier: true
     };
   }
 

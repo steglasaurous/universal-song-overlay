@@ -6,7 +6,7 @@
       <div class="songPosition">{{ gameState.songPosition * 1000 | date:'m:ss' }}</div>
     </div>
   </div>
-  <div class="songInfo">
+  <div class="songInfo" [ngClass]="{ 'songInfoWithAlbumArt': isAlbumArtVisible && gameState.albumArt }">
     <div class="title">{{ gameState.title }}</div>
     <div class="artist">{{ gameState.artist}}</div>
     <div class="mapperContainer"><span class="mapper">{{ gameState.mapper }}</span> &nbsp;<span

@@ -15,6 +15,7 @@ export const initialState: GameStateModel = {
   difficulty: "",
   mapper: "",
   albumArt: "",
+  lastSongInfoUpdate: 0,
   score: 0,
   highScore: 0,
   multiplier: 0,
@@ -27,7 +28,7 @@ export const initialState: GameStateModel = {
 
 export const gameStateReducer = createReducer(
   initialState,
-  on(updateSongDetails, (state: GameStateModel, { title, artist, mapper, difficulty, songLength, extraText, albumArt }): GameStateModel => {
+  on(updateSongDetails, (state: GameStateModel, { title, artist, mapper, difficulty, songLength, extraText, albumArt, lastSongInfoUpdate }): GameStateModel => {
     // the ... is called a "spread operator". It returns a new object based on a copy of the old one plus changes.
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 
@@ -39,7 +40,8 @@ export const gameStateReducer = createReducer(
       difficulty: difficulty,
       songLength: songLength,
       extraText: extraText,
-      albumArt: albumArt
+      albumArt: albumArt,
+      lastSongInfoUpdate: lastSongInfoUpdate ?? Date.now()
     };
   }),
   on(updateSongPosition, (state: GameStateModel, { songPosition }): GameStateModel => {
@@ -49,7 +51,13 @@ export const gameStateReducer = createReducer(
     }
   }),
   on(clearAll, (state: GameStateModel): GameStateModel => {
-    return initialState;
+    // Only clear if the song info was updated more than 4 seconds ago.  Otherwise in certain games like beat saber, this
+    // could actually be a restart so don't clear everything.
+    if (Date.now() - state.lastSongInfoUpdate > 4000) {
+      return initialState;
+    }
+
+    return state;
   }),
   on(updateScore, (state: GameStateModel, { score, combo, multiplier }): GameStateModel => {
     return {

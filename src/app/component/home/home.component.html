@@ -14,7 +14,8 @@
     [isVisible]="(isVisible$ | async) || false"
     [gameState]="(gameState$ | async) || gameState"
     [showHighScore]="supportedComponents.highScore"
-    [showCombo]="supportedComponents.combo">
+    [showCombo]="supportedComponents.combo"
+    [showMultiplier]="supportedComponents.multiplier">
   </app-score>
   <app-player-health
     [hidden]="!supportedComponents.playerHealth || enabledComponents.indexOf('player-health') < 0"
