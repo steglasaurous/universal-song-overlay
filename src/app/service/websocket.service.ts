@@ -1,7 +1,7 @@
 
-import {EMPTY, mergeMap, Observable, Observer, of, retryWhen, Subject, throwError, timer} from "rxjs";
-import {catchError, multicast, switchAll, tap} from "rxjs/operators";
-import {webSocket, WebSocketSubject} from "rxjs/webSocket";
+import {mergeMap, Observable, Observer, of, retryWhen, Subject, throwError, timer} from "rxjs";
+import {catchError} from "rxjs/operators";
+import {WebSocketSubject} from "rxjs/webSocket";
 
 export class WebsocketService {
   private socket$!: WebSocketSubject<any>;
@@ -86,6 +86,7 @@ export class WebsocketService {
           this.connected = false;
         },
         complete: () => {
+          this.connected = false;
           console.log('Connection closed for ' + this.websocketUrl);
         }
       });
