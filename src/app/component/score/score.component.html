@@ -5,7 +5,7 @@
     <div class="scoreAndMultiplier">
       <div class="currentScore"
       [ngClass]="{ 'newHighScore': gameState.highScore > 0 && gameState.score > gameState.highScore }">{{ gameState.score|number }}</div>
-      <div class="scoreMultiplier" [hidden]="!showMultiplier" [ngClass]="{ 'm-fadeIn': gameState.multiplier > 1, 'm-fadeOut': gameState.multiplier <= 1 }">{{ gameState.multiplier }}x</div>
+      <div class="scoreMultiplier" [hidden]="!showMultiplier" [ngClass]="{ 'show': gameState.multiplier > 1, 'hide': gameState.multiplier <= 1 || gameState.multiplier === undefined }">{{ gameState.multiplier }}x</div>
     </div>
     <div class="combo" [hidden]="!showCombo">
       <div class="comboFieldLabel">Combo</div>

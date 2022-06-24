@@ -49,6 +49,17 @@ body {
 }
 
 
+.scoreMultiplier.show {
+  animation: fadeIn;
+  animation-duration: 500ms;
+}
+.scoreMultiplier.hide {
+  opacity: 0;
+  animation: fadeOut;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
 /* Song Details Component - song title, artist, album art and song progress, if using the spinner */
 .songDetails {
   /* This makes a translucent background on the song block.
@@ -183,8 +194,6 @@ body {
         border-radius: 100px;
         width: 50px;
         text-align: center;
-        padding-top: 5px;
-        padding-bottom: 5px;
         color: black;
         font-size: 30px;
         margin-left: 30px;
