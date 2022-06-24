@@ -53,8 +53,9 @@ export abstract class AbstractGameDataService {
           // No game is connected now.  Start looking for connections if we're not already.
           if (!this.websocketService.isRetryEnabled) {
             this.websocketService.isRetryEnabled = true;
-            this.websocketService.reconnect();
           }
+
+          this.websocketService.reconnect();
         }
       }
     });
