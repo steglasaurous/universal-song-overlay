@@ -9,7 +9,8 @@ export const updateSongDetails = createAction(
     difficulty: string,
     songLength: number,
     extraText: string,
-    albumArt?: string
+    albumArt?: string,
+    lastSongInfoUpdate?: number
   }>()
 );
 

@@ -1,7 +1,6 @@
 import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {
-  clearAll,
   updatePlayerHealth,
   updateScore,
   updateSongDetails,
@@ -44,7 +43,8 @@ export class AudioTripGameDataService extends AbstractGameDataService
       playerHealth: true,
       score: true,
       highScore: false,
-      combo: false
+      combo: false,
+      multiplier: true
     };
   }
 

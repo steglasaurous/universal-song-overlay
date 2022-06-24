@@ -4,5 +4,6 @@ export interface SupportedComponentsModel {
   playerHealth: boolean,
   score: boolean,
   highScore: boolean,
-  combo: boolean
+  combo: boolean,
+  multiplier: boolean
 }

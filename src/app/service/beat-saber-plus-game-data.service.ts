@@ -1,10 +1,13 @@
 import {AbstractGameDataService} from "./abstract-game-data.service";
 import {Store} from "@ngrx/store";
 import {SupportedComponentsModel} from "../model/supported-components.model";
-import {incrementSongPosition, setHighScore, updateScore, updateSongDetails} from "../state/gamestate.actions";
+import {
+  incrementSongPosition,
+  updateScore,
+  updateSongDetails,
+  updateSongPosition
+} from "../state/gamestate.actions";
 import {setVisible} from "../state/visible.actions";
-import {selectGameStateFeature} from "../state/gamestate.selectors";
-import {GameStateModel} from "../model/game-state.model";
 
 export class BeatSaberPlusGameDataService extends AbstractGameDataService {
   private songProgressTimerHandle: any = null;
@@ -36,24 +39,28 @@ export class BeatSaberPlusGameDataService extends AbstractGameDataService {
               break;
             case "Playing":
               this.store.dispatch(setVisible());
-              // FIXME: BS+ only shares when a song starts or pauses, so while it's playing,
-              //        we need to effectively fake song progress updates.
-              this.startSongProgressTimer();
               break;
           }
           break;
 
         case "mapInfo":
+          let albumArt;
+          if (data.mapInfoChanged.coverRaw) {
+            albumArt = "data:image/png;base64," + data.mapInfoChanged.coverRaw;
+          }
+
           this.store.dispatch(updateSongDetails({
             title: data.mapInfoChanged.name,
             artist: data.mapInfoChanged.artist,
             mapper: data.mapInfoChanged.mapper,
             difficulty: data.mapInfoChanged.difficulty,
-            songLength: data.mapInfoChanged.duration,
+            songLength: data.mapInfoChanged.duration / 1000,
             extraText: data.mapInfoChanged.BSRKey,
-            albumArt: "data:image/png;base64," + data.mapInfoChanged.coverRaw ?? ""
+            albumArt: albumArt
           }));
-          // this.store.dispatch(setHighScore({ highScore: data.PreviousRecord }));
+
+          this.store.dispatch(updateSongPosition({ songPosition: 0 }));
+          this.store.dispatch(updateScore({score: 0, combo: 0 }));
           this.store.dispatch(setVisible());
 
           break;
@@ -95,10 +102,11 @@ export class BeatSaberPlusGameDataService extends AbstractGameDataService {
     return {
       songDetails: true,
       songStatus: true,
-      playerHealth: true,
+      playerHealth: false,
       score: true,
       highScore: false,
-      combo: true
+      combo: true,
+      multiplier: false
     };
   }
 }

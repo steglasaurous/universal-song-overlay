@@ -1,11 +1,8 @@
 import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {
-  clearAll, setHighScore,
-  updatePlayerHealth,
-  updateScore,
+  setHighScore,
   updateSongDetails,
-  updateSongPosition
 } from "../state/gamestate.actions";
 import {AbstractGameDataService} from "./abstract-game-data.service";
 import {setVisible} from "../state/visible.actions";
@@ -32,7 +29,8 @@ export class BeatSaberMapGameDataService extends AbstractGameDataService
       playerHealth: true,
       score: true,
       highScore: false,
-      combo: true
+      combo: true,
+      multiplier: true
     };
   }
 

@@ -19,6 +19,9 @@ export class ScoreComponent implements OnInit {
   showCombo: boolean = true;
 
   @Input()
+  showMultiplier: boolean = true;
+
+  @Input()
   isVisible: boolean = false;
 
   constructor() { }
