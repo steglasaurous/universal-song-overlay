@@ -2,7 +2,7 @@
   <app-song-details
     [hidden]="!supportedComponents.songDetails || enabledComponents.indexOf('song-details') < 0"
     [isVisible]="(isVisible$ | async) || false"
-    [isAlbumArtVisible]="!(enabledComponents.indexOf('album-art') < 0)"
+    [isAlbumArtVisible]="flags.indexOf('hide-album-art') < 0"
     [gameState]="(gameState$ | async) || gameState"></app-song-details>
   <app-song-status
     [hidden]="!supportedComponents.songStatus || enabledComponents.indexOf('song-status') < 0"
