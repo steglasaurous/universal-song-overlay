@@ -28,7 +28,13 @@ export class HomeComponent implements OnInit {
   // https://stackoverflow.com/questions/61780339/angular-ivy-stricttemplates-true-type-boolean-null-is-not-assignable-to-type
   gameState: GameStateModel = initialState;
   supportedComponents: SupportedComponentsModel = supportedComponentsInitialState;
-  enabledComponents: string[] = ['song-details', 'album-art', 'song-status', 'score', 'player-health'];
+  enabledComponents: string[] = ['song-details', 'song-status', 'score', 'player-health'];
+
+  /**
+   * Supported flags:
+   * hide-album-art - Forces hiding of album art.
+   */
+  flags: string[] = [];
 
   constructor(
     private store: Store,
@@ -39,6 +45,7 @@ export class HomeComponent implements OnInit {
     const overrideWebsocketHost: string = this.route.snapshot.queryParamMap.get('websocket_host') ?? "";
 
     const overrideEnabledComponents: string = this.route.snapshot.queryParamMap.get('show') ?? "";
+    const overrideFlags: string = this.route.snapshot.queryParamMap.get('flags') ?? "";
 
     if (overrideEnabledComponents) {
       this.enabledComponents = overrideEnabledComponents.split(',')
@@ -48,6 +55,10 @@ export class HomeComponent implements OnInit {
 
     if (overrideWebsocketHost) {
       this.gameDataServiceManager.setWebsocketHost(overrideWebsocketHost);
+    }
+
+    if (overrideFlags) {
+      this.flags = overrideFlags.split(',');
     }
 
     this.gameState$.subscribe((gameState: GameStateModel) => {

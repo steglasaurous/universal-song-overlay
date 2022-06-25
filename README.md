@@ -104,9 +104,18 @@ No configuration necessary!  Boombox has a built-in websocket server, ready to g
 
 ## Beat Saber
 
-NOTE: Support for Beat Saber is UNTESTED as yet.
+Two methods of connection to beat saber are supported.
+
+* DataPuller - a mod installable by ModAssistant
+* Beat Saber Plus by HardCPP - Using BS+'s built-in websocket server for game data.
+
+### Using Data Puller
 
 1. Using ModAssistant, make sure that BS Data Puller is installed.    
+
+### Using Beat Saber Plus
+
+See https://github.com/hardcpp/BeatSaberPlus for details on how to install and use this mod.
 
 # Configuration Options
 
@@ -148,6 +157,30 @@ Show everything except health
 https://steglasaurous.github.io/universal-song-overlay/#?show=song-details,song-status,score
 ```
 
+### Flags
+
+`flags` - A comma-delimited list of flags that modify what individual components do.  
+
+Available flags:
+
+* `hide-album-art` - Forces hiding of album art from the song-details component.
+
+**Examples**
+
+Show everything but hide album art:
+
+```
+https://steglasaurous.github.io/universal-song-overlay/#?flags=hide-album-art
+```
+
+Show only the song details AND hide album art:
+
+```
+https://steglasaurous.github.io/universal-song-overlay/#?show=song-details&flags=hide-album-art
+```
+
+
+
 ### Themes and Layout
 
 `theme` - a comma-delimited list of themes to apply.  Some themes are meant to be modifiers to adjust layout.
@@ -156,6 +189,7 @@ Currently available themes:
 
 - `default` - Default white text with a serif font
 - `sulfur` - A purple-inspired theme
+- `ecko` - A beat saber-inspired theme
 
 More themes coming soon!
 
@@ -224,20 +258,21 @@ To create your own theme:
 * In `angular.json`, add your theme to the styles list, located under `projects > universal-song-overlay > architect > build > options > styles` like this:
 
 ```json
-"styles": [
-  "src/styles.scss",
-  {
-    "input": "src/themes/default.scss",
-    "bundleName": "default",
-    "inject": false
-  },
-  // Your new theme:
-  {
-    "input": "src/themes/your-new-theme.scss",
-    "bundleName": "your-new-theme",
-    "inject": false
-  }
-]
+{
+  "styles": [
+    "src/styles.scss",
+    {
+      "input": "src/themes/default.scss",
+      "bundleName": "default",
+      "inject": false
+    },
+    {
+      "input": "src/themes/your-new-theme.scss",
+      "bundleName": "your-new-theme",
+      "inject": false
+    }
+  ]
+}
 ```
 
 Your theme will be accessible via the theme parameter with the name you gave for `bundleName` above.
