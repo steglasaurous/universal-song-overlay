@@ -8,6 +8,7 @@ import {
 } from "../state/gamestate.actions";
 import {AbstractGameDataService} from "./abstract-game-data.service";
 import {setVisible} from "../state/visible.actions";
+import {setSongNotDone} from "../state/song-done.actions";
 
 export class SynthRidersGameDataService extends AbstractGameDataService
 {
@@ -52,6 +53,7 @@ export class SynthRidersGameDataService extends AbstractGameDataService
           extraText: "",
           albumArt: data.data.albumArt ?? null
         }));
+        this.store.dispatch(setSongNotDone());
         this.store.dispatch(setVisible());
 
         break;

@@ -8,6 +8,7 @@ import {
 } from "../state/gamestate.actions";
 import {AbstractGameDataService} from "./abstract-game-data.service";
 import {setVisible} from "../state/visible.actions";
+import {setSongNotDone} from "../state/song-done.actions";
 
 // NOTE: According to boombox docs, the websocket is only available locally on the PC running the game.  This won't
 // work on a 2-PC stream setup.  May need to do something like some kind of websocket proxy, or have streamerbot
@@ -72,6 +73,7 @@ export class BoomboxGameDataService extends AbstractGameDataService
             extraText: "",
             //albumArt: this.songData.coverRaw // Boombox says not yet implemented
           }));
+          this.store.dispatch(setSongNotDone());
           this.store.dispatch(setVisible());
         }
         break;

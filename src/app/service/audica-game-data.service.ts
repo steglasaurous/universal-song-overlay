@@ -9,6 +9,7 @@ import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {AbstractGameDataService} from "./abstract-game-data.service";
 import {setVisible} from "../state/visible.actions";
+import {setSongNotDone} from "../state/song-done.actions";
 
 export class AudicaGameDataService extends AbstractGameDataService {
 
@@ -54,6 +55,7 @@ export class AudicaGameDataService extends AbstractGameDataService {
           extraText: "",
           albumArt: data.data.albumArtData ? 'data:image/png;base64,' + data.data.albumArtData : ""
         }));
+        this.store.dispatch(setSongNotDone());
         this.store.dispatch(setVisible());
 
         break;

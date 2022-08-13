@@ -8,6 +8,7 @@ import {updateSupportedComponents} from "../state/supported-components.actions";
 import {tap} from "rxjs";
 import {setHidden} from "../state/visible.actions";
 import {clearAll} from "../state/gamestate.actions";
+import {setSongDone} from "../state/song-done.actions";
 
 export abstract class AbstractGameDataService {
   // Make this an array of websocket services?
@@ -69,6 +70,7 @@ export abstract class AbstractGameDataService {
   }
 
   protected hideAndClearGameState() {
+    this.store.dispatch(setSongDone());
     this.store.dispatch(setHidden());
     setTimeout(() => { this.store.dispatch(clearAll())}, 4000);
   }

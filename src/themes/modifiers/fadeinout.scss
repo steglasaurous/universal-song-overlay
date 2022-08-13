@@ -1,0 +1,10 @@
+.show {
+  animation: fadeIn;
+  animation-duration: 3s;
+}
+
+.hide {
+  animation: fadeOut;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}

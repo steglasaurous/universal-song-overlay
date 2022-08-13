@@ -8,6 +8,7 @@ import {
   updateSongPosition
 } from "../state/gamestate.actions";
 import {setVisible} from "../state/visible.actions";
+import {setSongNotDone} from "../state/song-done.actions";
 
 export class BeatSaberPlusGameDataService extends AbstractGameDataService {
   private songProgressTimerHandle: any = null;
@@ -61,6 +62,7 @@ export class BeatSaberPlusGameDataService extends AbstractGameDataService {
 
           this.store.dispatch(updateSongPosition({ songPosition: 0 }));
           this.store.dispatch(updateScore({score: 0, combo: 0 }));
+          this.store.dispatch(setSongNotDone());
           this.store.dispatch(setVisible());
 
           break;

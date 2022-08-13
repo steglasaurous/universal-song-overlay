@@ -25,6 +25,7 @@ import {visibleReducer} from "./state/visible.reducer";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {BeatSaberPlusGameDataService} from "./service/beat-saber-plus-game-data.service";
+import {songDoneReducer} from "./state/song-done.reducer";
 
 const routes: Routes =[
   { path: "", component: HomeComponent}
@@ -45,7 +46,8 @@ const routes: Routes =[
             gameState: gameStateReducer,
             supportedComponents: supportedComponentsReducer,
             connectedGame: connectedGameReducer,
-            isVisible: visibleReducer
+            isVisible: visibleReducer,
+            songDone: songDoneReducer,
         }, {}),
         NgbModule,
         // NOTE: Using the hash strategy for routing so that this app will work when loaded directly as a file (for 2-pc stream setups)

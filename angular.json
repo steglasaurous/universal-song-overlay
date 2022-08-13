@@ -67,6 +67,11 @@
                 "input": "src/themes/modifiers/stretch-health-progress-bar.scss",
                 "bundleName": "stretch-health-progress-bar",
                 "inject": false
+              },
+              {
+                "input": "src/themes/modifiers/fadeinout.scss",
+                "bundleName": "fadeinout",
+                "inject": false
               }
             ],
             "scripts": []

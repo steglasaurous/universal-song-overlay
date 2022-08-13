@@ -11,6 +11,7 @@ import {selectGameStateFeature} from "../state/gamestate.selectors";
 import {GameStateModel} from "../model/game-state.model";
 import {initialState} from "../state/gamestate.reducer";
 import {setVisible} from "../state/visible.actions";
+import {setSongNotDone} from "../state/song-done.actions";
 
 export class AudioTripGameDataService extends AbstractGameDataService
 {
@@ -68,6 +69,7 @@ export class AudioTripGameDataService extends AbstractGameDataService
           extraText: "",
           albumArt: ""
         }));
+        this.store.dispatch(setSongNotDone());
         this.store.dispatch(setVisible());
       }
 
