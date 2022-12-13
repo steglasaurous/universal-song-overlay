@@ -36,7 +36,16 @@
   .progress {
     margin-left: auto;
     margin-right: 0;
-
   }
-  //text-align: right;
+}
+
+.show {
+  animation: backInRight;
+  animation-duration: 1s;
+}
+
+.hide {
+  animation: backOutRight;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
