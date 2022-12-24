@@ -255,6 +255,50 @@ body {
   }
 }
 
+.gameSpecific {
+  .synthRiders {
+    width: 222px;
+    .gameMode {
+      text-align: center;
+    }
+    .modifiers {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      .modifier {
+        width: 64px;
+        height: 64px;
+
+        background-size: 64px 64px;
+        background-repeat: no-repeat;
+
+        font-size: 36px;
+        -webkit-text-stroke: 1px black;
+        text-align: center;
+        line-height: 1em;
+        img {
+          width: 64px;
+        }
+      }
+
+      .njs {
+        background-image: url("../assets/ico-njs.png");
+      }
+      .noteSize {
+        background-image: url("../assets/ico-note-size.png");
+      }
+      .spinMode {
+        background-image: url("../assets/ico-spin-mode.png");
+      }
+      .spiralMode {
+        background-image: url("../assets/ico-spiral-mode.png");
+      }
+      .obstaclesEnabled {
+        //background-image: url("../assets/ico-spiral-mode.png");
+      }
+    }
+  }
+}
 
 
 //.m-fadeOut {

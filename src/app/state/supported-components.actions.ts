@@ -9,6 +9,7 @@ export const updateSupportedComponents = createAction(
     score: boolean,
     highScore: boolean,
     combo: boolean,
-    multiplier: boolean
+    multiplier: boolean,
+    gameSpecific?: boolean
   }>()
 );

@@ -22,4 +22,10 @@
     [isVisible]="(isVisible$ | async) || false"
     [gameState]="(gameState$ | async) || gameState">
   </app-player-health>
+  <app-game-specific
+    [hidden]="!supportedComponents.gameSpecific || enabledComponents.indexOf('game-specific') < 0"
+    [isVisible]="(isVisible$ | async) || false"
+    [gameState]="(gameState$ | async) || gameState"
+    [connectedGame]="(connectedGame$ | async) || ''">
+  </app-game-specific>
 </div>

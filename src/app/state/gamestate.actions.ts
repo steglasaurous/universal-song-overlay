@@ -11,6 +11,7 @@ export const updateSongDetails = createAction(
     extraText: string,
     albumArt?: string,
     lastSongInfoUpdate?: number
+    gameSpecificData?: any
   }>()
 );
 

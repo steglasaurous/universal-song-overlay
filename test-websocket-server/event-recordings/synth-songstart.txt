@@ -1,0 +1,4 @@
+1671842929600 {"eventType":"SceneChange","data":{"sceneName":"01.Static Stage 1 (Redesigned)"}}
+1671842931643 {"eventType":"SongStart","data":{"song":"Soda City Funk","difficulty":"Master","author":"Tim Legend","beatMapper":"BlackBlazon & KuritsaDBS","length":164.711,"bpm":118.0,"albumArt":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQIHWM4CwQACAcDNROPn5AAAAAASUVORK5CYII=","noFailEnabled":true,"spinEnabled":true,"spinMode":1,"spinIntensity":0,"spiralEnabled":false,"spiralIntensity":0,"obstaclesEnabled":false,"noteJumpSpeed":1,"suddenDeathEnabled":false,"vanishNotesEnabled":true,"prismaticNotesEnabled":true,"noteSize":2,"oneHandModeEnabled":false,"isExperienceStage":false,"isForceMode":false,"haloEnabled":true}}
+1671842932666 {"eventType":"PlayTime","data":{"playTimeMS":1008.30731}}
+1671842933666 {"eventType":"PlayTime","data":{"playTimeMS":2009.2533}}
