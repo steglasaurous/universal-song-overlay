@@ -8,12 +8,13 @@ export const supportedComponentsInitialState: SupportedComponentsModel = {
   songStatus: false,
   highScore: false,
   songDetails: false,
-  combo: false
+  combo: false,
+  gameSpecific: false
 }
 
 export const supportedComponentsReducer = createReducer(
   supportedComponentsInitialState,
-  on(updateSupportedComponents, (state: SupportedComponentsModel, { playerHealth, score, songStatus, highScore, songDetails, combo }): SupportedComponentsModel => {
+  on(updateSupportedComponents, (state: SupportedComponentsModel, { playerHealth, score, songStatus, highScore, songDetails, combo, gameSpecific }): SupportedComponentsModel => {
     return {
       ...state,
       playerHealth: playerHealth,
@@ -21,7 +22,8 @@ export const supportedComponentsReducer = createReducer(
       songStatus: songStatus,
       highScore: highScore,
       songDetails: songDetails,
-      combo: combo
+      combo: combo,
+      gameSpecific: gameSpecific
     }
   })
 );

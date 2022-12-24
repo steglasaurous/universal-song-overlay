@@ -22,12 +22,13 @@ export const initialState: GameStateModel = {
   songLength: 0,
   songPosition: 0,
   extraText: "",
-  playerHealth: 0
+  playerHealth: 0,
+  gameSpecificData: null
 }
 
 export const gameStateReducer = createReducer(
   initialState,
-  on(updateSongDetails, (state: GameStateModel, { title, artist, mapper, difficulty, songLength, extraText, albumArt }): GameStateModel => {
+  on(updateSongDetails, (state: GameStateModel, { title, artist, mapper, difficulty, songLength, extraText, albumArt, gameSpecificData }): GameStateModel => {
     // the ... is called a "spread operator". It returns a new object based on a copy of the old one plus changes.
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 
@@ -39,7 +40,8 @@ export const gameStateReducer = createReducer(
       difficulty: difficulty,
       songLength: songLength,
       extraText: extraText,
-      albumArt: albumArt
+      albumArt: albumArt,
+      gameSpecificData: gameSpecificData
     };
   }),
   on(updateSongPosition, (state: GameStateModel, { songPosition }): GameStateModel => {

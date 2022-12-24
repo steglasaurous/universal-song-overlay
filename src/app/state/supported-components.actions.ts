@@ -8,6 +8,7 @@ export const updateSupportedComponents = createAction(
     playerHealth: boolean,
     score: boolean,
     highScore: boolean,
-    combo: boolean
+    combo: boolean,
+    gameSpecific?: boolean
   }>()
 );

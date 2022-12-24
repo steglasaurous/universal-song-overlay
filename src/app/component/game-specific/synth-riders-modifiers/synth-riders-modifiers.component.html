@@ -1,0 +1,47 @@
+<div class="synthRiders">
+  <div class="gameMode">
+    <span *ngIf="!gameState.gameSpecificData.isForceMode">Rhythm</span>
+    <span *ngIf="gameState.gameSpecificData.isForceMode">Force</span>
+  </div>
+  <div class="modifiers">
+    <div class="modifier noFailEnabled" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.noFailEnabled">
+      <img src="assets/ico-no-fail.png">
+    </div>
+    <div class="modifier haloEnabled" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.haloEnabled">
+      <img src="assets/ico-halo.png">
+    </div>
+    <div class="modifier njs" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.noteJumpSpeed > 0">
+      {{ gameState.gameSpecificData.noteJumpSpeed + 1 }}x
+    </div>
+    <div class="modifier noteSize" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.noteSize > 0">
+      {{ gameState.gameSpecificData.noteSize == 1 ? "Sm" : "Lg" }}
+    </div>
+    <div class="modifier prismaticNotes" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.prismaticNotesEnabled">
+      <img src="assets/ico-prismatic-notes.png">
+    </div>
+    <div class="modifier spinMode" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.spinEnabled">
+      <span *ngIf="gameState.gameSpecificData.spinMode == 0">90</span>
+      <span *ngIf="gameState.gameSpecificData.spinMode == 1">180</span>
+      <span *ngIf="gameState.gameSpecificData.spinMode == 2">360</span>
+      <span *ngIf="gameState.gameSpecificData.spinMode == 3">360+</span><br/>
+      <span *ngIf="gameState.gameSpecificData.spinIntensity == 0">styled</span>
+      <span *ngIf="gameState.gameSpecificData.spinIntensity == 1">wild</span>
+      <span *ngIf="gameState.gameSpecificData.spinIntensity == 2">mild</span>
+    </div>
+    <div class="modifier spiralMode" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.spiralEnabled">
+      <span *ngIf="gameState.gameSpecificData.spiralIntensity == 1">mild</span>
+      <span *ngIf="gameState.gameSpecificData.spiralIntensity == 2">styled</span>
+      <span *ngIf="gameState.gameSpecificData.spiralIntensity == 3">wild</span>
+    </div>
+    <!-- NOTE: we only show this when obstaclesEnabled is false, as it represents no-walls mode -->
+    <div class="modifier obstaclesEnabled" *ngIf="gameState.gameSpecificData && !gameState.gameSpecificData.obstaclesEnabled">
+      NoWalls
+    </div>
+    <div class="modifier suddenDeath" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.suddenDeathEnabled">
+      <img src="assets/ico-sudden-death.png">
+    </div>
+    <div class="modifier vanishNotes" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.vanishNotesEnabled">
+      <img src="assets/ico-vanish-notes.png">
+    </div>
+  </div>
+</div>

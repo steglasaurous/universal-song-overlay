@@ -24,6 +24,8 @@ import { HomeComponent } from './component/home/home.component';
 import {visibleReducer} from "./state/visible.reducer";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { SynthRidersModifiersComponent } from './component/game-specific/synth-riders-modifiers/synth-riders-modifiers.component';
+import { GameSpecificComponent } from './component/game-specific/game-specific.component';
 
 const routes: Routes =[
   { path: "", component: HomeComponent}
@@ -36,7 +38,9 @@ const routes: Routes =[
     SongStatusComponent,
     ScoreComponent,
     PlayerHealthComponent,
-    HomeComponent
+    HomeComponent,
+    SynthRidersModifiersComponent,
+    GameSpecificComponent
   ],
     imports: [
         BrowserModule,

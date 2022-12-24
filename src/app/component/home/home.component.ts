@@ -10,6 +10,7 @@ import {GameDataServiceManager} from "../../service/game-data-service-manager";
 import {ActivatedRoute} from "@angular/router";
 import {DOCUMENT} from "@angular/common";
 import {selectVisible} from "../../state/visible.selectors";
+import {selectConnectedGame} from "../../state/connected-game.selectors";
 
 @Component({
   selector: 'app-home',
@@ -23,12 +24,14 @@ export class HomeComponent implements OnInit {
   supportedComponents$ = this.store.select(selectSupportedComponentsFeature);
   isVisible$ = this.store.select(selectVisible);
 
+  connectedGame$ = this.store.select(selectConnectedGame);
+
   // Used to get around the async directive signature possibly returning null.
   // Not sure if it negates the observable or not?
   // https://stackoverflow.com/questions/61780339/angular-ivy-stricttemplates-true-type-boolean-null-is-not-assignable-to-type
   gameState: GameStateModel = initialState;
   supportedComponents: SupportedComponentsModel = supportedComponentsInitialState;
-  enabledComponents: string[] = ['song-details','song-status','score','player-health'];
+  enabledComponents: string[] = ['song-details','song-status','score','player-health', 'game-specific'];
 
   constructor(
     private store: Store,
@@ -41,7 +44,7 @@ export class HomeComponent implements OnInit {
     const overrideEnabledComponents: string = this.route.snapshot.queryParamMap.get('show') ?? "";
 
     if (overrideEnabledComponents) {
-      this.enabledComponents = overrideEnabledComponents.split(',')
+      this.enabledComponents = overrideEnabledComponents.split(',');
     }
 
     this.enabledComponents.find(element => element == 'test');
