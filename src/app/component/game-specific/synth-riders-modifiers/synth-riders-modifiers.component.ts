@@ -11,14 +11,7 @@ export class SynthRidersModifiersComponent implements OnInit {
   @Input()
   gameState: GameStateModel = initialState;
 
-  iconMap: Map<string, string> = new Map<string, string>();
-  constructor() {
-    this.iconMap.set('noFailEnabled', 'ico-no-fail.png');
-
-  }
-
   ngOnInit(): void {
-    console.log(this.gameState.gameSpecificData);
   }
 
 }
