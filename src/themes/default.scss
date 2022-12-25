@@ -254,11 +254,18 @@ body {
         width: 64px;
         height: 64px;
 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
         background-size: 64px 64px;
         background-repeat: no-repeat;
-
-        font-size: 36px;
+        font-family: "Arial Black", sans-serif;
+        color: white;
+        font-size: 24px;
         -webkit-text-stroke: 1px black;
+
         text-align: center;
         line-height: 1em;
         img {
@@ -274,6 +281,13 @@ body {
       }
       .spinMode {
         background-image: url("../assets/ico-spin-mode.png");
+        .spinDegrees {
+          padding-top: 5px;
+        }
+        .spinIntensity {
+          padding-bottom: 5px;
+          font-size: 12px;
+        }
       }
       .spiralMode {
         background-image: url("../assets/ico-spiral-mode.png");
