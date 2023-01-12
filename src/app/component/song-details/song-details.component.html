@@ -11,7 +11,10 @@
     <div class="artist">{{ gameState.artist}}</div>
     <div class="mapperContainer"><span class="mapper">{{ gameState.mapper }}</span> &nbsp;<span
       class="mapperLabel">Mapper</span></div>
-    <div class="difficulty">{{ gameState.difficulty }}</div>
+    <div class="difficulty">
+      <div class="difficulty-shim"></div>
+      <div class="difficulty-text">{{ gameState.difficulty }}</div>
+    </div>
     <div class="extraText">{{ gameState.extraText }}</div>
   </div>
 </div>
