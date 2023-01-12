@@ -122,7 +122,11 @@ body {
       color: grey;
     }
 
-    .difficulty {
+    .difficulty-shim {
+      width: 0;
+    }
+
+    .difficulty-text {
       margin-top: 10px;
       padding: 4px 5px 4px 8px;
       color: black;
