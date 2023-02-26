@@ -1,6 +1,7 @@
 import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {
+  updateMultiplayerState,
   updatePlayerHealth,
   updateScore,
   updateSongDetails,
@@ -9,9 +10,9 @@ import {
 import {AbstractGameDataService} from "./abstract-game-data.service";
 import {setVisible} from "../state/visible.actions";
 import {SynthRidersGameSpecificData} from "../model/synth-riders-game-specific-data";
+import {SynthRidersMultiGameSpecificDataModel} from "../model/synth-riders-multi-game-specific-data.model";
 
-export class SynthRidersGameDataService extends AbstractGameDataService
-{
+export class SynthRidersGameDataService extends AbstractGameDataService {
   static readonly GAME_NAME = 'synth_riders';
 
   constructor(
@@ -109,6 +110,59 @@ export class SynthRidersGameDataService extends AbstractGameDataService
         if (data.data.sceneName == '3.GameEnd') {
           this.hideAndClearGameState();
         }
+
+        // Can add something for multi when returning to the room to clear
+        // the game state.
+        break;
+      case "MultiLiveScore":
+        console.log("MultiLiveScore");
+        console.log(data);
+        this.store.dispatch(updateMultiplayerState({
+          scores: data.data.scores,
+          inProgress: true,
+          completed: false
+        }));
+        break;
+      case "MultiFinalScores":
+        console.log("MultiFinalScores");
+        console.log(data);
+        let scores = [];
+        if (data.data.scores instanceof Array) {
+          for (const score of data.data.scores) {
+            scores.push({
+              name: score.name,
+              score: score.score,
+              gameSpecificData: {
+                perfectHits: score.perfectHits,
+                perfectScore: score.perfectScore,
+                goodHits: score.goodHits,
+                goodScore: score.goodScore,
+                poorHits: score.poorHits,
+                poorScore: score.poorScore,
+                totalNotes: score.totalNotes,
+                longestStreak: score.longestStreak,
+                specialsComplete: score.specialsComplete,
+                totalSpecials: score.totalSpecials,
+                maxMultiplier: score.maxMultiplier
+              } as SynthRidersMultiGameSpecificDataModel
+            });
+          }
+          // Sort the scores highest to lowest.
+          scores.sort((a, b) => {
+            if (a.score === b.score) {
+              return 0;
+            } else {
+              return (a.score < b.score) ? 1 : -1;
+            }
+          });
+
+          this.store.dispatch(updateMultiplayerState({
+            scores: scores,
+            inProgress: false,
+            completed: true
+          }));
+        }
+
         break;
     }
   }

@@ -26,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatLegacyProgressSpinnerModule as MatProgressSpinnerModule} from "@angular/material/legacy-progress-spinner";
 import { SynthRidersModifiersComponent } from './component/game-specific/synth-riders-modifiers/synth-riders-modifiers.component';
 import { GameSpecificComponent } from './component/game-specific/game-specific.component';
+import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
+import {multiplayerStateReducer} from "./state/multiplayerstate.reducer";
 
 const routes: Routes =[
   { path: "", component: HomeComponent}
@@ -40,7 +42,8 @@ const routes: Routes =[
     PlayerHealthComponent,
     HomeComponent,
     SynthRidersModifiersComponent,
-    GameSpecificComponent
+    GameSpecificComponent,
+    MultiplayerComponent
   ],
     imports: [
         BrowserModule,
@@ -48,7 +51,8 @@ const routes: Routes =[
             gameState: gameStateReducer,
             supportedComponents: supportedComponentsReducer,
             connectedGame: connectedGameReducer,
-            isVisible: visibleReducer
+            isVisible: visibleReducer,
+            multiplayerState: multiplayerStateReducer,
         }, {}),
         NgbModule,
         // NOTE: Using the hash strategy for routing so that this app will work when loaded directly as a file (for 2-pc stream setups)

@@ -46,3 +46,12 @@ export const updatePlayerHealth = createAction(
     playerHealth: number
   }>()
 );
+
+export const updateMultiplayerState = createAction(
+  '[Update multiplayer state]',
+  props<{
+    scores: { name: string, score: number, gameSpecificData: any }[],
+    inProgress: boolean,
+    completed: boolean
+  }>()
+);

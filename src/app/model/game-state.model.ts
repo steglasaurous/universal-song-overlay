@@ -12,5 +12,5 @@ export interface GameStateModel {
   songPosition: number,
   extraText: string,
   playerHealth: number,
-  gameSpecificData: any
+  gameSpecificData: any,
 }

@@ -6,4 +6,5 @@ export interface SupportedComponentsModel {
   highScore: boolean;
   combo: boolean;
   gameSpecific?: boolean;
+  multiplayer?: boolean;
 }

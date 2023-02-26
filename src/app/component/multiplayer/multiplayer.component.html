@@ -1,0 +1,47 @@
+<div class="multiplayer-live" *ngIf="multiplayerState && multiplayerState.inProgress">
+  <div *ngFor="let scoreItem of multiplayerState.scores; let position = index;">
+    <span class="multiplayerPosition">{{ position + 1 }}</span>
+    <h2>{{ scoreItem.name }}</h2>
+    <h3>{{ scoreItem.score|number }}</h3>
+  </div>
+</div>
+<div class="multiplayer-results" *ngIf="multiplayerState && multiplayerState.completed">
+  <!-- Create a component for game-specific crap here -->
+  <!-- For now, I'm hard-coding it -->
+  <table>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Perfect</th>
+      <th>Good</th>
+      <th>Poor</th>
+      <th>Total<br>Notes</th>
+      <th>Longest<br>Streak</th>
+      <th>Specials</th>
+      <th>Max<br>Multiplier</th>
+      <th>Score</th>
+    </tr>
+<!--    'first': position === 0,-->
+<!--    'second': position === 1,-->
+<!--    'third': position === 2,-->
+
+    <tr
+      *ngFor="let scoreItem of multiplayerState.scores; let position = index;"
+      [ngClass]="{
+      'altRow': position % 2 > 0
+      }">
+      <td class="position">{{ position + 1}}</td>
+      <td class="name">{{ scoreItem.name }}</td>
+      <ng-container *ngIf="scoreItem.gameSpecificData">
+      <td>{{ scoreItem.gameSpecificData.perfectHits }}</td>
+      <td>{{ scoreItem.gameSpecificData.goodHits }}</td>
+      <td>{{ scoreItem.gameSpecificData.poorHits }}</td>
+      <td>{{ scoreItem.gameSpecificData.perfectHits + scoreItem.gameSpecificData.goodHits + scoreItem.gameSpecificData.poorHits }}/{{ scoreItem.gameSpecificData.totalNotes }}</td>
+      <td>{{ scoreItem.gameSpecificData.longestStreak }}</td>
+      <td>{{ scoreItem.gameSpecificData.specialsComplete }}/{{ scoreItem.gameSpecificData.totalSpecials }}</td>
+      <td>{{ scoreItem.gameSpecificData.maxMultiplier }}</td>
+      </ng-container>
+      <td>{{ scoreItem.score|number }}</td>
+    </tr>
+  </table>
+</div>

@@ -3,6 +3,7 @@ import {selectGameStateFeature} from "../../state/gamestate.selectors";
 import {selectSupportedComponentsFeature} from "../../state/supported-components.selectors";
 import {GameStateModel} from "../../model/game-state.model";
 import {initialState} from "../../state/gamestate.reducer";
+import {initialState as multiplayerInitialState} from "../../state/multiplayerstate.reducer";
 import {SupportedComponentsModel} from "../../model/supported-components.model";
 import {supportedComponentsInitialState} from "../../state/supported-components.reducer";
 import {Store} from "@ngrx/store";
@@ -11,6 +12,8 @@ import {ActivatedRoute} from "@angular/router";
 import {DOCUMENT} from "@angular/common";
 import {selectVisible} from "../../state/visible.selectors";
 import {selectConnectedGame} from "../../state/connected-game.selectors";
+import {MultiplayerStateModel} from "../../model/multiplayer-state.model";
+import {selectMultiplayerState} from "../../state/multiplayerstate.selectors";
 
 @Component({
   selector: 'app-home',
@@ -21,6 +24,8 @@ export class HomeComponent implements OnInit {
   title = 'self-contained-song-overlay';
 
   gameState$ = this.store.select(selectGameStateFeature);
+  multiplayerState$ = this.store.select(selectMultiplayerState);
+
   supportedComponents$ = this.store.select(selectSupportedComponentsFeature);
   isVisible$ = this.store.select(selectVisible);
 
@@ -30,6 +35,8 @@ export class HomeComponent implements OnInit {
   // Not sure if it negates the observable or not?
   // https://stackoverflow.com/questions/61780339/angular-ivy-stricttemplates-true-type-boolean-null-is-not-assignable-to-type
   gameState: GameStateModel = initialState;
+  multiplayerState: MultiplayerStateModel = multiplayerInitialState;
+
   supportedComponents: SupportedComponentsModel = supportedComponentsInitialState;
   enabledComponents: string[] = ['song-details','song-status','score','player-health', 'game-specific'];
 
@@ -55,6 +62,10 @@ export class HomeComponent implements OnInit {
 
     this.gameState$.subscribe((gameState: GameStateModel) => {
       this.gameState = gameState;
+    });
+
+    this.multiplayerState$.subscribe((multiplayerState: MultiplayerStateModel) => {
+      this.multiplayerState = multiplayerState;
     });
 
     this.supportedComponents$.subscribe((supportedComponents: SupportedComponentsModel) => {

@@ -1,4 +1,4 @@
-<div [hidden]="gameState.title == ''" class="appContainer">
+<div class="appContainer">
   <app-song-details
     [hidden]="!supportedComponents.songDetails || enabledComponents.indexOf('song-details') < 0"
     [isVisible]="(isVisible$ | async) || false"
@@ -26,4 +26,8 @@
     [gameState]="(gameState$ | async) || gameState"
     [connectedGame]="(connectedGame$ | async) || ''">
   </app-game-specific>
+  <app-multiplayer
+  [isVisible]="true"
+  [multiplayerState]="(multiplayerState$ | async) || multiplayerState">
+  </app-multiplayer>
 </div>

@@ -23,12 +23,21 @@ export const initialState: GameStateModel = {
   songPosition: 0,
   extraText: "",
   playerHealth: 0,
-  gameSpecificData: null
+  gameSpecificData: null,
 }
 
 export const gameStateReducer = createReducer(
   initialState,
-  on(updateSongDetails, (state: GameStateModel, { title, artist, mapper, difficulty, songLength, extraText, albumArt, gameSpecificData }): GameStateModel => {
+  on(updateSongDetails, (state: GameStateModel, {
+    title,
+    artist,
+    mapper,
+    difficulty,
+    songLength,
+    extraText,
+    albumArt,
+    gameSpecificData
+  }): GameStateModel => {
     // the ... is called a "spread operator". It returns a new object based on a copy of the old one plus changes.
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 
@@ -44,7 +53,7 @@ export const gameStateReducer = createReducer(
       gameSpecificData: gameSpecificData
     };
   }),
-  on(updateSongPosition, (state: GameStateModel, { songPosition }): GameStateModel => {
+  on(updateSongPosition, (state: GameStateModel, {songPosition}): GameStateModel => {
     return {
       ...state,
       songPosition: songPosition
@@ -53,7 +62,7 @@ export const gameStateReducer = createReducer(
   on(clearAll, (state: GameStateModel): GameStateModel => {
     return initialState;
   }),
-  on(updateScore, (state: GameStateModel, { score, combo, multiplier }): GameStateModel => {
+  on(updateScore, (state: GameStateModel, {score, combo, multiplier}): GameStateModel => {
     return {
       ...state,
       score: score ?? state.score,
@@ -61,16 +70,17 @@ export const gameStateReducer = createReducer(
       multiplier: multiplier ?? state.multiplier
     }
   }),
-  on(setHighScore, (state: GameStateModel, { highScore }): GameStateModel => {
+  on(setHighScore, (state: GameStateModel, {highScore}): GameStateModel => {
     return {
       ...state,
       highScore: highScore
     }
   }),
-  on(updatePlayerHealth, (state: GameStateModel, { playerHealth }): GameStateModel => {
+  on(updatePlayerHealth, (state: GameStateModel, {playerHealth}): GameStateModel => {
     return {
       ...state,
       playerHealth: playerHealth
     }
-  })
+  }),
 );
+

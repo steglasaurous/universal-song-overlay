@@ -303,6 +303,43 @@ body {
   }
 }
 
+.multiplayer-results {
+  font-family: Roboto, sans-serif;
+  font-size: 32px;
+
+  table {
+    width: 100%;
+    border-spacing: 5px;
+
+    tr.first {
+      background-color: #a78000;
+    }
+    tr.second {
+      background-color: #909090;
+    }
+
+    tr.third {
+      background-color: sandybrown;
+    }
+    tr.altRow {
+      background-color: #222222;
+    }
+    tr {
+      th {
+        color: aqua;
+        vertical-align: bottom;
+        text-align: center;
+      }
+      td {
+        padding: 0 10px 0 10px;
+        text-align: center;
+      }
+      td.position, td.name {
+        text-align: left;
+      }
+    }
+  }
+}
 
 //.m-fadeOut {
 //  visibility: hidden;
