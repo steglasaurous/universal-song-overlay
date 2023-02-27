@@ -117,8 +117,17 @@ export class SynthRidersGameDataService extends AbstractGameDataService {
       case "MultiLiveScore":
         console.log("MultiLiveScore");
         console.log(data);
+        let liveScores: Array<any> = data.data.scores;
+        liveScores.sort((a, b) => {
+          if (a.score === b.score) {
+            return 0;
+          } else {
+            return (a.score < b.score) ? 1 : -1;
+          }
+        });
+
         this.store.dispatch(updateMultiplayerState({
-          scores: data.data.scores,
+          scores: liveScores,
           inProgress: true,
           completed: false
         }));

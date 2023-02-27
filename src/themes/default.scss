@@ -303,6 +303,35 @@ body {
   }
 }
 
+.multiplayer-live {
+  background-color: black;
+  width: 15%;
+  .multiplayerLiveItem {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    .multiplayerPosition {
+      color: white;
+      font-weight: bold;
+      //background-color: gray;
+      width: 45px;
+      text-align: center;
+      font-size: 64px;
+      padding-left: 32px;
+      padding-right: 64px;
+    }
+
+    .multiplayerName {
+      color: white;
+      font-size: 32px;
+    }
+    .multiplayerScore {
+
+    }
+  }
+}
+
 .multiplayer-results {
   font-family: Roboto, sans-serif;
   font-size: 32px;
@@ -325,6 +354,8 @@ body {
       background-color: #222222;
     }
     tr {
+      background-color: #000000;
+
       th {
         color: aqua;
         vertical-align: bottom;

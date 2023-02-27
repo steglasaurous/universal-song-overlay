@@ -1,8 +1,10 @@
 <div class="multiplayer-live" *ngIf="multiplayerState && multiplayerState.inProgress">
-  <div *ngFor="let scoreItem of multiplayerState.scores; let position = index;">
-    <span class="multiplayerPosition">{{ position + 1 }}</span>
-    <h2>{{ scoreItem.name }}</h2>
-    <h3>{{ scoreItem.score|number }}</h3>
+  <div class="multiplayerLiveItem" *ngFor="let scoreItem of multiplayerState.scores; let position = index;">
+    <div class="multiplayerPosition">{{ position + 1 }}</div>
+    <div class="multiplayerName">{{ scoreItem.name }}
+      <div class="multiplayerScore">{{ scoreItem.score|number }}</div>
+    </div>
+
   </div>
 </div>
 <div class="multiplayer-results" *ngIf="multiplayerState && multiplayerState.completed">
