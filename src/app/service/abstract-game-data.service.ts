@@ -30,6 +30,8 @@ export abstract class AbstractGameDataService {
         next: (value) => {
           this.store.dispatch(setConnectedGame({ gameName: this.getGameName() }));
           this.store.dispatch(updateSupportedComponents(this.supports()));
+          // For the multiplayer data server
+          this.websocketService.sendMessage({"event": "subscribe", "data": { "username": "steglasaurous" }});
         },
         error: () => {},
         complete: () => {}

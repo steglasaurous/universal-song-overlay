@@ -120,6 +120,9 @@ export class WebsocketService {
   }
 
   public sendMessage(msg: any) {
+    console.log("Seding message");
+    console.log(msg);
+
     this.socket$.next(msg);
   }
 

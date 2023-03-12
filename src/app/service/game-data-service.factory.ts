@@ -5,6 +5,7 @@ import {BoomboxGameDataService} from "./boombox-game-data.service";
 import {AudioTripGameDataService} from "./audio-trip-game-data.service";
 import {BeatSaberMapGameDataService} from "./beat-saber-map-game-data.service";
 import {BeatSaberLiveGameDataService} from "./beat-saber-live-game-data.service";
+import {MultiplayerDataServerService} from "./multiplayer-data-server.service";
 export const GameDataServiceFactory = (gameName: string, host: string = 'localhost') => {
   switch (gameName) {
     case SynthRidersGameDataService.name:
@@ -31,6 +32,11 @@ export const GameDataServiceFactory = (gameName: string, host: string = 'localho
       return (store: Store) => {
         return new BeatSaberLiveGameDataService(store, host);
       }
+    case MultiplayerDataServerService.name:
+      return (store: Store) => {
+        return new MultiplayerDataServerService(store);
+      }
+
   }
 
   throw new Error("Invalid game data service specified.");

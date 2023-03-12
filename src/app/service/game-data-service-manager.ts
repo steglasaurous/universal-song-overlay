@@ -7,6 +7,7 @@ import {BoomboxGameDataService} from "./boombox-game-data.service";
 import {AudioTripGameDataService} from "./audio-trip-game-data.service";
 import {BeatSaberMapGameDataService} from "./beat-saber-map-game-data.service";
 import {BeatSaberLiveGameDataService} from "./beat-saber-live-game-data.service";
+import {MultiplayerDataServerService} from "./multiplayer-data-server.service";
 
 @Injectable()
 export class GameDataServiceManager {
@@ -19,7 +20,8 @@ export class GameDataServiceManager {
     boomboxGameDataService: BoomboxGameDataService,
     audioTripGameDataService: AudioTripGameDataService,
     beatSaberMapGameDataService: BeatSaberMapGameDataService,
-    beatSaberLiveGameDataService: BeatSaberLiveGameDataService
+    beatSaberLiveGameDataService: BeatSaberLiveGameDataService,
+    multiplayerDataServerService: MultiplayerDataServerService
   ) {
     this.gameDataServices.push(
       synthRidersGameDataService,
@@ -27,7 +29,8 @@ export class GameDataServiceManager {
       boomboxGameDataService,
       beatSaberMapGameDataService,
       beatSaberLiveGameDataService,
-      audioTripGameDataService
+      audioTripGameDataService,
+      multiplayerDataServerService
     );
   }
 

@@ -28,6 +28,7 @@ import { SynthRidersModifiersComponent } from './component/game-specific/synth-r
 import { GameSpecificComponent } from './component/game-specific/game-specific.component';
 import { MultiplayerComponent } from './component/multiplayer/multiplayer.component';
 import {multiplayerStateReducer} from "./state/multiplayerstate.reducer";
+import {MultiplayerDataServerService} from "./service/multiplayer-data-server.service";
 
 const routes: Routes =[
   { path: "", component: HomeComponent}
@@ -78,6 +79,9 @@ const routes: Routes =[
     },
     {
       provide: BeatSaberLiveGameDataService, useFactory: GameDataServiceFactory(BeatSaberLiveGameDataService.name), deps: [ Store ]
+    },
+    {
+      provide: MultiplayerDataServerService, useFactory: GameDataServiceFactory(MultiplayerDataServerService.name), deps: [ Store ]
     },
     GameDataServiceManager
   ],
