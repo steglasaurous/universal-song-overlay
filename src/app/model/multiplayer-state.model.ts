@@ -7,7 +7,7 @@ export interface MultiplayerStateModel {
     // FIXME: Make this generic so it works with other multiplayer-capable games.
     gameSpecificData?: SynthRidersMultiGameSpecificDataModel
   }[];
-
+  visible: boolean;
   inProgress: boolean;
   completed: boolean;
 }

@@ -49,13 +49,13 @@
                 "inject": false
               },
               {
-                "input": "src/themes/sulfur2.scss",
-                "bundleName": "sulfur2",
+                "input": "src/themes/ecko.scss",
+                "bundleName": "ecko",
                 "inject": false
               },
               {
-                "input": "src/themes/ecko.scss",
-                "bundleName": "ecko",
+                "input": "src/themes/comp.scss",
+                "bundleName": "comp",
                 "inject": false
               },
               {

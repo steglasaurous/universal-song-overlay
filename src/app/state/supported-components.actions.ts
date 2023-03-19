@@ -1,14 +1,7 @@
 import {createAction, props} from "@ngrx/store";
+import {SupportedComponentsModel} from "../model/supported-components.model";
 
 export const updateSupportedComponents = createAction(
   'Update supported actions',
-  props<{
-    songDetails: boolean,
-    songStatus: boolean,
-    playerHealth: boolean,
-    score: boolean,
-    highScore: boolean,
-    combo: boolean,
-    gameSpecific?: boolean
-  }>()
+  props<SupportedComponentsModel>()
 );

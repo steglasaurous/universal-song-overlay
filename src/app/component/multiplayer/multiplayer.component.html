@@ -7,11 +7,15 @@
 
   </div>
 </div>
-<div class="multiplayer-results" *ngIf="multiplayerState && multiplayerState.completed">
+<div class="multiplayer-results">
   <!-- Create a component for game-specific crap here -->
   <!-- For now, I'm hard-coding it -->
-  <table>
-    <tr>
+  <!-- "totalHide" - this is to prevent the rows showing briefly on each update because of the animation assignments. If there's a better way, I'm all ears. -->
+  <table [ngClass]="{
+    'totalHide': ((multiplayerState && !multiplayerState.completed) || !multiplayerState.visible) }">
+    <tr [ngClass]="{
+    'hide': ((multiplayerState && !multiplayerState.completed) || !multiplayerState.visible),
+    'show': (multiplayerState && multiplayerState.completed && multiplayerState.visible) }">
       <th></th>
       <th></th>
       <th>Perfect</th>
@@ -23,21 +27,26 @@
       <th>Max<br>Multiplier</th>
       <th>Score</th>
     </tr>
-<!--    'first': position === 0,-->
-<!--    'second': position === 1,-->
-<!--    'third': position === 2,-->
+    <tr [ngClass]="{
+    'hide': ((multiplayerState && !multiplayerState.completed) || !multiplayerState.visible),
+    'show': (multiplayerState && multiplayerState.completed && multiplayerState.visible) }"
+      *ngFor="let scoreItem of multiplayerState.scores; let position = index;">
 
-    <tr
-      *ngFor="let scoreItem of multiplayerState.scores; let position = index;"
-      [ngClass]="{
-      'altRow': position % 2 > 0
-      }">
       <td class="position">{{ position + 1}}</td>
-      <td class="name">{{ scoreItem.name }}</td>
+      <td class="name">
+        <ng-container *ngIf="scoreItem.gameSpecificData && (scoreItem.gameSpecificData.perfectHits + scoreItem.gameSpecificData.goodHits + scoreItem.gameSpecificData.poorHits == scoreItem.gameSpecificData.totalNotes)">
+          <img src="assets/ico-full-combo-left.png" style="width: 32px" />
+          {{ scoreItem.name }}
+          <img src="assets/ico-full-combo.png" style="width: 32px"/>
+        </ng-container>
+        <ng-container *ngIf="scoreItem.gameSpecificData && (scoreItem.gameSpecificData.perfectHits + scoreItem.gameSpecificData.goodHits + scoreItem.gameSpecificData.poorHits != scoreItem.gameSpecificData.totalNotes)">
+          {{ scoreItem.name }}
+        </ng-container>
+      </td>
       <ng-container *ngIf="scoreItem.gameSpecificData">
-      <td>{{ scoreItem.gameSpecificData.perfectHits }}</td>
-      <td>{{ scoreItem.gameSpecificData.goodHits }}</td>
-      <td>{{ scoreItem.gameSpecificData.poorHits }}</td>
+      <td [ngClass]="{ 'mostAccurate': scoreItem.gameSpecificData.highestAccuracy }">{{ scoreItem.gameSpecificData.perfectHits }}</td>
+      <td [ngClass]="{ 'mostAccurate': scoreItem.gameSpecificData.highestAccuracy }">{{ scoreItem.gameSpecificData.goodHits }}</td>
+      <td [ngClass]="{ 'mostAccurate': scoreItem.gameSpecificData.highestAccuracy }">{{ scoreItem.gameSpecificData.poorHits }}</td>
       <td>{{ scoreItem.gameSpecificData.perfectHits + scoreItem.gameSpecificData.goodHits + scoreItem.gameSpecificData.poorHits }}/{{ scoreItem.gameSpecificData.totalNotes }}</td>
       <td>{{ scoreItem.gameSpecificData.longestStreak }}</td>
       <td>{{ scoreItem.gameSpecificData.specialsComplete }}/{{ scoreItem.gameSpecificData.totalSpecials }}</td>

@@ -10,4 +10,5 @@ export interface SynthRidersMultiGameSpecificDataModel {
   maxMultiplier: number;
   specialsComplete: number;
   totalSpecials: number;
+  highestAccuracy: boolean;
 }

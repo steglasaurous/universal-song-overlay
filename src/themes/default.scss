@@ -335,10 +335,20 @@ body {
 .multiplayer-results {
   font-family: Roboto, sans-serif;
   font-size: 32px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+  table.totalHide {
+    visibility: hidden;
+  }
 
   table {
     width: 100%;
     border-spacing: 5px;
+
 
     tr.first {
       background-color: #a78000;
@@ -350,9 +360,10 @@ body {
     tr.third {
       background-color: sandybrown;
     }
-    tr.altRow {
+    tr:nth-child(even) {
       background-color: #222222;
     }
+
     tr {
       background-color: #000000;
 
@@ -368,6 +379,23 @@ body {
       td.position, td.name {
         text-align: left;
       }
+    }
+    @for $i from 0 through 11 {
+      tr.show:nth-child(#{$i}) {
+        animation: backInLeft;
+        animation-duration: 1s;
+        animation-delay: #{$i / 10}s;
+        animation-fill-mode: both;
+      }
+      tr.hide:nth-child(#{$i}) {
+        animation: backOutRight;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-delay: #{$i / 10}s;
+      }
+    }
+    td.mostAccurate {
+      background-color: peru;
     }
   }
 }

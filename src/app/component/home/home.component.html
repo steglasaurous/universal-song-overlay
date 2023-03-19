@@ -26,8 +26,11 @@
     [gameState]="(gameState$ | async) || gameState"
     [connectedGame]="(connectedGame$ | async) || ''">
   </app-game-specific>
+
+  <!-- Always visible as this won't follow the same approach as the rest of the components (showing standings longer, etc) -->
   <app-multiplayer
-  [isVisible]="true"
-  [multiplayerState]="(multiplayerState$ | async) || multiplayerState">
+    [hidden]="!supportedComponents.multiplayer || enabledComponents.indexOf('multiplayer') < 0"
+    [isVisible]="true"
+    [multiplayerState]="(multiplayerState$ | async) || multiplayerState">
   </app-multiplayer>
 </div>

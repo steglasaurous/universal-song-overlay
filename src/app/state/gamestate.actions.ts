@@ -52,6 +52,7 @@ export const updateMultiplayerState = createAction(
   props<{
     scores: { name: string, score: number, gameSpecificData: any }[],
     inProgress: boolean,
-    completed: boolean
+    completed: boolean,
+    visible: boolean
   }>()
 );

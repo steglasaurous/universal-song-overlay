@@ -131,29 +131,33 @@ export class MultiplayerDataServerService extends AbstractGameDataService {
           this.store.dispatch(updateMultiplayerState({
             scores: liveScores,
             inProgress: true,
-            completed: false
+            completed: false,
+            visible: true
           }));
         } else {
           let scores = [];
           if (data.data.scores instanceof Array) {
             for (const score of data.data.scores) {
-              scores.push({
-                name: score.name,
-                score: score.score,
-                gameSpecificData: {
-                  perfectHits: score.gameSpecificDetails.perfectHits,
-                  perfectScore: score.gameSpecificDetails.perfectScore,
-                  goodHits: score.gameSpecificDetails.goodHits,
-                  goodScore: score.gameSpecificDetails.goodScore,
-                  poorHits: score.gameSpecificDetails.poorHits,
-                  poorScore: score.gameSpecificDetails.poorScore,
-                  totalNotes: score.gameSpecificDetails.totalNotes,
-                  longestStreak: score.gameSpecificDetails.longestStreak,
-                  specialsComplete: score.gameSpecificDetails.specialsComplete,
-                  totalSpecials: score.gameSpecificDetails.totalSpecials,
-                  maxMultiplier: score.gameSpecificDetails.maxMultiplier
-                } as SynthRidersMultiGameSpecificDataModel
-              });
+              if (score) {
+                console.log(score);
+                scores.push({
+                  name: score.name,
+                  score: score.score,
+                  gameSpecificData: {
+                    perfectHits: score.gameSpecificData.perfectHits,
+                    perfectScore: score.gameSpecificData.perfectScore,
+                    goodHits: score.gameSpecificData.goodHits,
+                    goodScore: score.gameSpecificData.goodScore,
+                    poorHits: score.gameSpecificData.poorHits,
+                    poorScore: score.gameSpecificData.poorScore,
+                    totalNotes: score.gameSpecificData.totalNotes,
+                    longestStreak: score.gameSpecificData.longestStreak,
+                    specialsComplete: score.gameSpecificData.specialsComplete,
+                    totalSpecials: score.gameSpecificData.totalSpecials,
+                    maxMultiplier: score.gameSpecificData.maxMultiplier
+                  } as SynthRidersMultiGameSpecificDataModel
+                });
+              }
             }
             // Sort the scores highest to lowest.
             scores.sort((a, b) => {
@@ -167,7 +171,8 @@ export class MultiplayerDataServerService extends AbstractGameDataService {
             this.store.dispatch(updateMultiplayerState({
               scores: scores,
               inProgress: false,
-              completed: true
+              completed: true,
+              visible: true
             }));
           }
         }

@@ -9,6 +9,15 @@ export const updateMultiplayerState = createAction(
   }>()
 );
 
+export const setMultiVisible = createAction(
+  '[Multiplayer set visible]'
+);
+
+export const setMultiHidden = createAction(
+  '[Multiplayer set hidden]'
+);
+
+
 export const clearMultiplayerState = createAction(
   '[Multiplayer State] Clear status'
 );

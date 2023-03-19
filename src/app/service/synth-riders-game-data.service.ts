@@ -15,6 +15,8 @@ import {SynthRidersMultiGameSpecificDataModel} from "../model/synth-riders-multi
 export class SynthRidersGameDataService extends AbstractGameDataService {
   static readonly GAME_NAME = 'synth_riders';
 
+  private multiplayerClearTimeoutHandle?: NodeJS.Timeout;
+
   constructor(
     store: Store,
     host: string,
@@ -36,7 +38,8 @@ export class SynthRidersGameDataService extends AbstractGameDataService {
       score: true,
       highScore: false,
       combo: true,
-      gameSpecific: true
+      gameSpecific: true,
+      multiplayer: true,
     };
   }
 
@@ -115,8 +118,6 @@ export class SynthRidersGameDataService extends AbstractGameDataService {
         // the game state.
         break;
       case "MultiLiveScore":
-        console.log("MultiLiveScore");
-        console.log(data);
         let liveScores: Array<any> = data.data.scores;
         liveScores.sort((a, b) => {
           if (a.score === b.score) {
@@ -126,16 +127,24 @@ export class SynthRidersGameDataService extends AbstractGameDataService {
           }
         });
 
+        if (this.multiplayerClearTimeoutHandle) {
+          clearTimeout(this.multiplayerClearTimeoutHandle);
+        }
+
         this.store.dispatch(updateMultiplayerState({
           scores: liveScores,
           inProgress: true,
-          completed: false
+          completed: false,
+          visible: true
         }));
+
         break;
       case "MultiFinalScores":
-        console.log("MultiFinalScores");
-        console.log(data);
         let scores = [];
+        let highestPerfects = 0;
+
+        let mostAccuratePlayers: string[] = [];
+
         if (data.data.scores instanceof Array) {
           for (const score of data.data.scores) {
             scores.push({
@@ -152,10 +161,26 @@ export class SynthRidersGameDataService extends AbstractGameDataService {
                 longestStreak: score.longestStreak,
                 specialsComplete: score.specialsComplete,
                 totalSpecials: score.totalSpecials,
-                maxMultiplier: score.maxMultiplier
+                maxMultiplier: score.maxMultiplier,
+                highestAccuracy: false
               } as SynthRidersMultiGameSpecificDataModel
             });
+
+            if (score.perfectHits > highestPerfects) {
+              mostAccuratePlayers = [ score.name ];
+            }
+            if (score.perfectHits == highestPerfects) {
+              mostAccuratePlayers.push(score.name);
+            }
           }
+
+          // Loop through one more time to assign the highest accuracy award(s).
+          for (const scoreItem of scores) {
+            if (mostAccuratePlayers.includes(scoreItem.name)) {
+              scoreItem.gameSpecificData.highestAccuracy = true;
+            }
+          }
+
           // Sort the scores highest to lowest.
           scores.sort((a, b) => {
             if (a.score === b.score) {
@@ -168,8 +193,14 @@ export class SynthRidersGameDataService extends AbstractGameDataService {
           this.store.dispatch(updateMultiplayerState({
             scores: scores,
             inProgress: false,
-            completed: true
+            completed: true,
+            visible: true
           }));
+
+          // Clear multiplayer state after 30s
+          this.multiplayerClearTimeoutHandle = setTimeout(() => {
+            this.hideAndClearMultiState();
+          },30000); // FIXME: Make this timeout configurable
         }
 
         break;

@@ -8,6 +8,7 @@ import {updateSupportedComponents} from "../state/supported-components.actions";
 import {tap} from "rxjs";
 import {setHidden} from "../state/visible.actions";
 import {clearAll} from "../state/gamestate.actions";
+import {clearMultiplayerState, setMultiHidden} from "../state/multiplayerstate.actions";
 
 export abstract class AbstractGameDataService {
   // Make this an array of websocket services?
@@ -31,7 +32,8 @@ export abstract class AbstractGameDataService {
           this.store.dispatch(setConnectedGame({ gameName: this.getGameName() }));
           this.store.dispatch(updateSupportedComponents(this.supports()));
           // For the multiplayer data server
-          this.websocketService.sendMessage({"event": "subscribe", "data": { "username": "steglasaurous" }});
+          // FIXME: Take this out of here and create a means by which, upon successful connection, a service can execute a function.
+          this.websocketService.sendMessage({"event": "subscribe", "data": { "username": "bookdude13" }});
         },
         error: () => {},
         complete: () => {}
@@ -72,6 +74,11 @@ export abstract class AbstractGameDataService {
   protected hideAndClearGameState() {
     this.store.dispatch(setHidden());
     setTimeout(() => { this.store.dispatch(clearAll())}, 4000);
+  }
+
+  protected hideAndClearMultiState() {
+    this.store.dispatch(setMultiHidden());
+    setTimeout(() => { this.store.dispatch(clearMultiplayerState())}, 4000);
   }
 
   abstract supports(): SupportedComponentsModel;

@@ -38,7 +38,8 @@ export class HomeComponent implements OnInit {
   multiplayerState: MultiplayerStateModel = multiplayerInitialState;
 
   supportedComponents: SupportedComponentsModel = supportedComponentsInitialState;
-  enabledComponents: string[] = ['song-details','song-status','score','player-health', 'game-specific'];
+  // FIXME: Consider: Don't enable multiplayer by default so it doesn't make an unexpected appearance
+  enabledComponents: string[] = ['song-details','song-status','score','player-health', 'game-specific', 'multiplayer'];
 
   constructor(
     private store: Store,
