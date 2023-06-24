@@ -73,7 +73,7 @@ export abstract class AbstractGameDataService {
 
   protected hideAndClearGameState() {
     this.store.dispatch(setHidden());
-    setTimeout(() => { this.store.dispatch(clearAll())}, 4000);
+    setTimeout(() => { this.store.dispatch(clearAll())}, 2000);
   }
 
   protected hideAndClearMultiState() {

@@ -1,7 +1,6 @@
 import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {
-  clearAll,
   updatePlayerHealth,
   updateScore,
   updateSongDetails,
@@ -17,6 +16,8 @@ export class BoomboxGameDataService extends AbstractGameDataService
 {
   // Temporary storage of song data while map is being selected.
   private songData: any;
+
+  private currentGameState: string = '';
 
   constructor(
     store: Store,
@@ -57,12 +58,7 @@ export class BoomboxGameDataService extends AbstractGameDataService
         // determining when to show or hide the overlay.
 
         this.songData = data.mapInfoChanged; // FIXME: Put this into a structured form?
-
-        break;
-      case "gameState":
-        if (data.gameStateChanged == "Lobby") {
-          this.hideAndClearGameState();
-        } else if (data.gameStateChanged == "InGame") {
+        if (this.currentGameState == 'Playing') {
           this.store.dispatch(updateSongDetails({
             title: this.songData.name,
             artist: this.songData.artist,
@@ -74,6 +70,14 @@ export class BoomboxGameDataService extends AbstractGameDataService
           }));
           this.store.dispatch(setVisible());
         }
+        break;
+      case "gameState":
+        this.currentGameState = data.gameStateChanged;
+
+        if (data.gameStateChanged == "Lobby") {
+          this.hideAndClearGameState();
+        }
+
         break;
 
       case "songTime":
