@@ -28,7 +28,7 @@ export class BeatSaberLiveGameDataService extends AbstractGameDataService
       songStatus: true,
       playerHealth: true,
       score: true,
-      highScore: false,
+      highScore: true,
       combo: true
     };
   }
@@ -45,7 +45,7 @@ export class BeatSaberLiveGameDataService extends AbstractGameDataService
       }));
     }
 
-    if (data.PlayerHealth) {
+    if (data.PlayerHealth !== undefined) {
       this.store.dispatch(updatePlayerHealth({
         playerHealth: data.PlayerHealth
       }));

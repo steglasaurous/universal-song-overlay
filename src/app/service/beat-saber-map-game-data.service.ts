@@ -1,17 +1,16 @@
 import {SupportedComponentsModel} from "../model/supported-components.model";
 import {Store} from "@ngrx/store";
 import {
-  clearAll, setHighScore,
-  updatePlayerHealth,
-  updateScore,
+  setHighScore,
   updateSongDetails,
-  updateSongPosition
 } from "../state/gamestate.actions";
 import {AbstractGameDataService} from "./abstract-game-data.service";
 import {setVisible} from "../state/visible.actions";
 
 export class BeatSaberMapGameDataService extends AbstractGameDataService
 {
+  private inLevel: boolean = false;
+
   constructor(
     store: Store,
     host: string,
@@ -31,7 +30,7 @@ export class BeatSaberMapGameDataService extends AbstractGameDataService
       songStatus: true,
       playerHealth: true,
       score: true,
-      highScore: false,
+      highScore: true,
       combo: true
     };
   }
@@ -41,20 +40,22 @@ export class BeatSaberMapGameDataService extends AbstractGameDataService
   }
 
   override processMessage(data: any) {
-    if (data.SongName) {
+    if (data.InLevel == true) {
       this.store.dispatch(updateSongDetails({
         title: data.SongName,
         artist: data.SongAuthor,
         mapper: data.Mapper,
         difficulty: data.Difficulty,
-        songLength: data.Length,
-        extraText: data.BSRKey,
-        albumArt: data.coverImage ?? ""
+        songLength: data.Duration,
+        extraText: data.BSRKey ? 'BSR ' + data.BSRKey : '',
+        albumArt: data.CoverImage ?? ""
       }));
       this.store.dispatch(setHighScore({ highScore: data.PreviousRecord }));
       this.store.dispatch(setVisible());
-    } else if (data.SongName === "") {
+      this.inLevel = data.InLevel;
+    } else if (data.InLevel !== this.inLevel && data.InLevel == false) {
       this.hideAndClearGameState();
+      this.inLevel = data.InLevel;
     }
   }
 }
