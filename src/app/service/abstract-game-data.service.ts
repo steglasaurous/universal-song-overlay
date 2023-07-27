@@ -27,7 +27,7 @@ export abstract class AbstractGameDataService {
   public connect() {
     this.websocketService.connect(
       {
-        next: (value) => {
+        next: () => {
           this.store.dispatch(setConnectedGame({ gameName: this.getGameName() }));
           this.store.dispatch(updateSupportedComponents(this.supports()));
         },
@@ -49,6 +49,11 @@ export abstract class AbstractGameDataService {
         if (gameName != this.getGameName() && gameName != undefined && gameName != NO_GAME_CONNECTED) {
           // Another game connected.  Disable retries for now.
           this.websocketService.isRetryEnabled = false;
+          // HACK: if BSPlus and DataPuller are present for beat saber, prefer DataPuller and force
+          // the BSPlus version to close.
+          if (this.getGameName() == 'beat_saber_plus' && gameName == 'beat_saber') {
+            this.websocketService.close();
+          }
         } else if (gameName == NO_GAME_CONNECTED) {
           // No game is connected now.  Start looking for connections if we're not already.
           if (!this.websocketService.isRetryEnabled) {
