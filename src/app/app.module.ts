@@ -23,7 +23,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { HomeComponent } from './component/home/home.component';
 import {visibleReducer} from "./state/visible.reducer";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatLegacyProgressSpinnerModule as MatProgressSpinnerModule} from "@angular/material/legacy-progress-spinner";
 import {BeatSaberPlusGameDataService} from "./service/beat-saber-plus-game-data.service";
 
 const routes: Routes =[
