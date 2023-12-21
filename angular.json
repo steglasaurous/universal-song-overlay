@@ -49,6 +49,11 @@
                 "inject": false
               },
               {
+                "input": "src/themes/tinker.scss",
+                "bundleName": "tinker",
+                "inject": false
+              },
+              {
                 "input": "src/themes/modifiers/align-right.scss",
                 "bundleName": "align-right",
                 "inject": false
@@ -143,6 +148,5 @@
         }
       }
     }
-  },
-  "defaultProject": "universal-song-overlay"
+  }
 }

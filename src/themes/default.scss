@@ -1,7 +1,8 @@
 /**
  * Default theme
  */
-@import '~bootstrap/scss/bootstrap';
+
+@import "bootstrap/scss/bootstrap";
 @import 'animate.css';
 
 body {
@@ -86,7 +87,7 @@ body {
       display: none; /* Disabled by default, but stylings left in place so a theme can simply 'enable' it. */
       position: relative;
 
-      .mat-progress-spinner {
+      .mat-mdc-progress-spinner {
         width: 100px;
         height: 100px;
 
@@ -113,9 +114,11 @@ body {
     margin-left: 20px;
   }
 
+
   .songInfo {
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 
     .title {
       font-size: 48px;
