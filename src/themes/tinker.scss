@@ -1,0 +1,31 @@
+@import 'default.scss';
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800");
+@import url('https://fonts.googleapis.com/css2?family=Eczar&display=swap');
+
+body {
+  color: #3390d6;
+  font-family: "Eczar", serif;
+}
+
+.songDetails {
+  .songInfo {
+    margin-left: 0;
+
+    .difficulty {
+      background-color: #2f3031;
+      color: #3fb8a6;
+      // font-size: 10px;
+    }
+  }
+}
+
+.songProgress {
+  .progress {
+    background-color: #0aa0ff; // background
+
+    .progress-bar {
+      background-color: #0cffe6; // foreground
+    }
+
+  }
+}
