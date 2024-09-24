@@ -14,6 +14,10 @@
     <div class="difficulty">
       <div class="difficulty-shim"></div>
       <div class="difficulty-text">{{ gameState.difficulty }}</div>
+      <app-game-specific
+        [gameState]="gameState"
+        [connectedGame]="(connectedGame$ | async) || ''">
+      </app-game-specific>
     </div>
     <div class="extraText">{{ gameState.extraText }}</div>
   </div>

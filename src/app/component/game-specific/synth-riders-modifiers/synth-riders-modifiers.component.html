@@ -1,10 +1,10 @@
 <div class="synthRiders">
   <div class="gameMode">
     <span *ngIf="gameState.gameSpecificData && !gameState.gameSpecificData.isForceMode">
-      Rhythm
+      <img src="assets/ico-rhythm.png">
     </span>
     <span *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.isForceMode">
-      Force
+      <img src="assets/ico-force.png">
     </span>
   </div>
   <div class="modifiers">
