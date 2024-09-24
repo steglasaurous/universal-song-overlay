@@ -118,10 +118,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "universal-song-overlay:build:production"
+              "buildTarget": "universal-song-overlay:build:production"
             },
             "development": {
-              "browserTarget": "universal-song-overlay:build:development"
+              "buildTarget": "universal-song-overlay:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -129,7 +129,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "universal-song-overlay:build"
+            "buildTarget": "universal-song-overlay:build"
           }
         },
         "test": {
