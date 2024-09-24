@@ -1,3 +1,4 @@
 <div class="gameSpecific">
   <app-synth-riders-modifiers *ngIf="this.connectedGame == games.synthRiders" [gameState]="gameState"></app-synth-riders-modifiers>
+  <app-generic-modifiers *ngIf="this.connectedGame != games.synthRiders" [gameState]="gameState"></app-generic-modifiers>
 </div>
