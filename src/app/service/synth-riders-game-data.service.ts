@@ -47,6 +47,7 @@ export class SynthRidersGameDataService extends AbstractGameDataService
   override processMessage(data: any) {
     switch (data.eventType) {
       case "SongStart":
+        console.log(data);
         this.store.dispatch(updateSongDetails({
           title: data.data.song,
           artist: data.data.author,
