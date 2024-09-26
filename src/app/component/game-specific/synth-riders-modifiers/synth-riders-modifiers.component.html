@@ -24,18 +24,10 @@
       <img src="assets/ico-prismatic-notes.png"> Prismatic
     </div>
     <div class="modifier spinMode" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.spinEnabled">
-      <span class="spinDegrees" *ngIf="gameState.gameSpecificData.spinMode == 0">90</span>
-      <span class="spinDegrees" *ngIf="gameState.gameSpecificData.spinMode == 1">180</span>
-      <span class="spinDegrees" *ngIf="gameState.gameSpecificData.spinMode == 2">360</span>
-      <span class="spinDegrees" *ngIf="gameState.gameSpecificData.spinMode == 3">360+</span><br/>
-      <span class="spinIntensity" *ngIf="gameState.gameSpecificData.spinIntensity == 0">styled</span>
-      <span class="spinIntensity" *ngIf="gameState.gameSpecificData.spinIntensity == 1">wild</span>
-      <span class="spinIntensity" *ngIf="gameState.gameSpecificData.spinIntensity == 2">mild</span>
+      <img src="assets/ico-spin-mode.png"> {{ getSpinDegrees(gameState.gameSpecificData.spinMode ) }}&deg; {{ getSpinIntensity(gameState.gameSpecificData.spinIntensity) }}
     </div>
     <div class="modifier spiralMode" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.spiralEnabled">
-      <span *ngIf="gameState.gameSpecificData.spiralIntensity == 1">mild</span>
-      <span *ngIf="gameState.gameSpecificData.spiralIntensity == 2">styled</span>
-      <span *ngIf="gameState.gameSpecificData.spiralIntensity == 3">wild</span>
+      <img src="assets/ico-spiral-mode.png"> {{ getSpiralIntensity(gameState.gameSpecificData.spiralIntensity) }}
     </div>
     <!-- NOTE: we only show this when obstaclesEnabled is false, as it represents no-walls mode -->
     <div class="modifier obstaclesEnabled" *ngIf="gameState.gameSpecificData && !gameState.gameSpecificData.obstaclesEnabled">
