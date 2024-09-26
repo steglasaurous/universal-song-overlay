@@ -264,6 +264,7 @@ body {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
+  max-width: 600px;
   .modifier {
     padding: 4px 5px 4px 8px;
     color: black;
