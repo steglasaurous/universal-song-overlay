@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 const outputDir = 'dist/universal-song-overlay/browser/';
 const htmlFileData = fs.readFileSync(outputDir + 'index.html').toString();
-// let matches = htmlFileData.matchAll(/<script src="(?<scriptfile>[A-Za-z0-9.\-]*)" type="module"><\/script>/g);
 const replacement = htmlFileData.replace(
   /<script src="(?<scriptfile>[A-Za-z0-9.\-]*)" type="module"><\/script>/g,
   (match, p1, offset, input, namedGroups) => {
