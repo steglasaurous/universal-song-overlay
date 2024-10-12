@@ -4,8 +4,7 @@ import {initialState} from "../../state/gamestate.reducer";
 
 @Component({
   selector: 'app-score',
-  templateUrl: './score.component.html',
-  styleUrls: ['./score.component.scss']
+  templateUrl: './score.component.html'
 })
 export class ScoreComponent implements OnInit {
 

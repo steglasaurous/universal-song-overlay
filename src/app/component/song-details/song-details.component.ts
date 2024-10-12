@@ -7,8 +7,7 @@ import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-song-details',
-  templateUrl: './song-details.component.html',
-  styleUrls: ['./song-details.component.scss']
+  templateUrl: './song-details.component.html'
 })
 export class SongDetailsComponent implements OnInit {
 

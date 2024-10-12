@@ -6,8 +6,7 @@ import {initialState} from "../../../state/gamestate.reducer";
   selector: 'app-generic-modifiers',
   standalone: true,
   imports: [],
-  templateUrl: './generic-modifiers.component.html',
-  styleUrl: './generic-modifiers.component.scss'
+  templateUrl: './generic-modifiers.component.html'
 })
 export class GenericModifiersComponent {
   @Input()

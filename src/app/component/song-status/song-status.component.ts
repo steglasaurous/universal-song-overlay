@@ -4,8 +4,7 @@ import {initialState} from "../../state/gamestate.reducer";
 
 @Component({
   selector: 'app-song-status',
-  templateUrl: './song-status.component.html',
-  styleUrls: ['./song-status.component.scss']
+  templateUrl: './song-status.component.html'
 })
 export class SongStatusComponent implements OnInit {
 

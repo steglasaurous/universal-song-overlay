@@ -5,8 +5,7 @@ import {SynthRidersGameDataService} from "../../service/synth-riders-game-data.s
 
 @Component({
   selector: 'app-game-specific',
-  templateUrl: './game-specific.component.html',
-  styleUrls: ['./game-specific.component.scss']
+  templateUrl: './game-specific.component.html'
 })
 export class GameSpecificComponent implements OnInit {
   @Input()

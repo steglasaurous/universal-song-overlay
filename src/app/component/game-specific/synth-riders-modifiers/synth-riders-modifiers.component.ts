@@ -1,11 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {GameStateModel} from "../../../model/game-state.model";
 import {initialState} from "../../../state/gamestate.reducer";
 
 @Component({
   selector: 'app-synth-riders-modifiers',
-  templateUrl: './synth-riders-modifiers.component.html',
-  styleUrls: ['./synth-riders-modifiers.component.scss']
+  templateUrl: './synth-riders-modifiers.component.html'
 })
 export class SynthRidersModifiersComponent {
   @Input()
