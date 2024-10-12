@@ -15,6 +15,6 @@ export interface SynthRidersGameSpecificData {
   noteSize: number; // 0 = default, 1 = small, 2 = big
   oneHandModeEnabled: boolean;
   isExperienceStage: boolean;
-  isForceMode: boolean; // false == rhythm mode, true == force mode
+  isForceMode?: boolean; // false == rhythm mode, true == force mode, null == unknown (using earlier version of websocket mod that doesn't emit these values)
   haloEnabled: boolean;
 }

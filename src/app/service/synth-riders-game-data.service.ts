@@ -48,6 +48,11 @@ export class SynthRidersGameDataService extends AbstractGameDataService
     switch (data.eventType) {
       case "SongStart":
         console.log(data);
+        let forceMode: boolean|null = null;
+        if (typeof data.data.isForceMode !== 'undefined') {
+          forceMode = data.data.isForceMode;
+        }
+
         this.store.dispatch(updateSongDetails({
           title: data.data.song,
           artist: data.data.author,
@@ -71,7 +76,7 @@ export class SynthRidersGameDataService extends AbstractGameDataService
             noteSize: data.data.noteSize ?? 0,
             oneHandModeEnabled: data.data.oneHandModeEnabled ?? false,
             isExperienceStage: data.data.isExperienceStage ?? false,
-            isForceMode: data.data.isForceMode ?? false,
+            isForceMode: forceMode,
             haloEnabled: data.data.haloEnabled ?? false
           } as SynthRidersGameSpecificData
         }));
