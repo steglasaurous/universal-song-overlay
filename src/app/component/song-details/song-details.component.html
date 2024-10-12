@@ -11,7 +11,12 @@
     <div class="artist">{{ gameState.artist}}</div>
     <div class="mapperContainer"><span class="mapper">{{ gameState.mapper }}</span> &nbsp;<span
       class="mapperLabel">Mapper</span></div>
-    <div class="difficulty">{{ gameState.difficulty }}</div>
+    <div class="modifiers">
+      <app-game-specific
+        [gameState]="gameState"
+        [connectedGame]="(connectedGame$ | async) || ''">
+      </app-game-specific>
+    </div>
     <div class="extraText">{{ gameState.extraText }}</div>
   </div>
 </div>

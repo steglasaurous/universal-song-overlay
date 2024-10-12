@@ -139,7 +139,11 @@ body {
       color: grey;
     }
 
-    .difficulty {
+    .difficulty-shim {
+      width: 0;
+    }
+
+    .difficulty-text {
       margin-top: 10px;
       padding: 4px 5px 4px 8px;
       color: black;
@@ -151,6 +155,7 @@ body {
       text-transform: uppercase;
       letter-spacing: 3px;
       width: fit-content;
+      height: 25px;
     }
   }
 }
@@ -255,15 +260,26 @@ body {
   }
 }
 
-
-
-//.m-fadeOut {
-//  visibility: hidden;
-//  opacity: 0;
-//  transition: visibility 0s linear 300ms, opacity 1000ms;
-//}
-//.m-fadeIn {
-//  visibility: visible;
-//  opacity: 1;
-//  transition: visibility 0s linear 0s, opacity 1000ms;
-//}
+.modifiers {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  max-width: 600px;
+  .modifier {
+    padding: 4px 5px 4px 8px;
+    color: black;
+    background: white;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    width: fit-content;
+    img {
+      display: inline-block;
+      height: 16px;
+      vertical-align: bottom;
+    }
+  }
+}

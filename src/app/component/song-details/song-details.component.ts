@@ -1,11 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GameStateModel} from "../../model/game-state.model";
 import {initialState} from "../../state/gamestate.reducer";
+import {supportedComponentsInitialState} from "../../state/supported-components.reducer";
+import {selectConnectedGame} from "../../state/connected-game.selectors";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-song-details',
-  templateUrl: './song-details.component.html',
-  styleUrls: ['./song-details.component.scss']
+  templateUrl: './song-details.component.html'
 })
 export class SongDetailsComponent implements OnInit {
 
@@ -18,7 +20,9 @@ export class SongDetailsComponent implements OnInit {
   @Input()
   isAlbumArtVisible: boolean = true;
 
-  constructor() {
+  connectedGame$ = this.store.select(selectConnectedGame);
+
+  constructor(private store: Store) {
 
   }
 
@@ -32,4 +36,6 @@ export class SongDetailsComponent implements OnInit {
 
     return 0;
   }
+
+  protected readonly supportedComponents = supportedComponentsInitialState;
 }

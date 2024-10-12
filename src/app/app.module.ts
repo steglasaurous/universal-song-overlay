@@ -25,6 +25,9 @@ import {visibleReducer} from "./state/visible.reducer";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {BeatSaberPlusGameDataService} from "./service/beat-saber-plus-game-data.service";
+import { SynthRidersModifiersComponent } from './component/game-specific/synth-riders-modifiers/synth-riders-modifiers.component';
+import { GameSpecificComponent } from './component/game-specific/game-specific.component';
+import {GenericModifiersComponent} from "./component/game-specific/generic-modifiers/generic-modifiers.component";
 
 const routes: Routes =[
   { path: "", component: HomeComponent}
@@ -37,22 +40,25 @@ const routes: Routes =[
     SongStatusComponent,
     ScoreComponent,
     PlayerHealthComponent,
-    HomeComponent
+    HomeComponent,
+    SynthRidersModifiersComponent,
+    GameSpecificComponent
   ],
-    imports: [
-        BrowserModule,
-        StoreModule.forRoot({
-            gameState: gameStateReducer,
-            supportedComponents: supportedComponentsReducer,
-            connectedGame: connectedGameReducer,
-            isVisible: visibleReducer
-        }, {}),
-        NgbModule,
-        // NOTE: Using the hash strategy for routing so that this app will work when loaded directly as a file (for 2-pc stream setups)
-        RouterModule.forRoot(routes, {useHash: true}),
-        BrowserAnimationsModule,
-        MatProgressSpinnerModule
-    ],
+  imports: [
+    BrowserModule,
+    StoreModule.forRoot({
+      gameState: gameStateReducer,
+      supportedComponents: supportedComponentsReducer,
+      connectedGame: connectedGameReducer,
+      isVisible: visibleReducer
+    }, {}),
+    NgbModule,
+    // NOTE: Using the hash strategy for routing so that this app will work when loaded directly as a file (for 2-pc stream setups)
+    RouterModule.forRoot(routes, {useHash: true}),
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    GenericModifiersComponent
+  ],
   providers: [
     {
       provide: SynthRidersGameDataService, useFactory: GameDataServiceFactory(SynthRidersGameDataService.name), deps: [ Store ]

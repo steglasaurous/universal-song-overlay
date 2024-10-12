@@ -1,0 +1,43 @@
+<div class="synthRiders">
+  <div class="modifiers">
+    <div class="modifier">{{ gameState.difficulty }}</div>
+    <div class="modifier rhythm" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.isForceMode !== null && !gameState.gameSpecificData.isForceMode">
+      <img src="assets/ico-rhythm.png"> Rhythm
+    </div>
+    <div class="modifier force" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.isForceMode !== null && gameState.gameSpecificData.isForceMode">
+      <img src="assets/ico-force.png">
+      Force
+    </div>
+    <div class="modifier noFailEnabled" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.noFailEnabled">
+      <img src="assets/ico-no-fail.png"> No-Fail
+    </div>
+    <div class="modifier haloEnabled" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.haloEnabled">
+      <img src="assets/ico-halo.png"> Halo
+    </div>
+    <div class="modifier njs" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.noteJumpSpeed > 0">
+      {{ gameState.gameSpecificData.noteJumpSpeed + 1 }}x NJS
+    </div>
+    <div class="modifier noteSize" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.noteSize > 0">
+      {{ gameState.gameSpecificData.noteSize == 1 ? "SML" : "BIG" }}
+    </div>
+    <div class="modifier prismaticNotes" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.prismaticNotesEnabled">
+      <img src="assets/ico-prismatic-notes.png"> Prismatic
+    </div>
+    <div class="modifier spinMode" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.spinEnabled">
+      <img src="assets/ico-spin-mode.png"> {{ getSpinDegrees(gameState.gameSpecificData.spinMode ) }}&deg; {{ getSpinIntensity(gameState.gameSpecificData.spinIntensity) }}
+    </div>
+    <div class="modifier spiralMode" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.spiralEnabled">
+      <img src="assets/ico-spiral-mode.png"> {{ getSpiralIntensity(gameState.gameSpecificData.spiralIntensity) }}
+    </div>
+    <!-- NOTE: we only show this when obstaclesEnabled is false, as it represents no-walls mode -->
+    <div class="modifier obstaclesEnabled" *ngIf="gameState.gameSpecificData && !gameState.gameSpecificData.obstaclesEnabled">
+      <img src="assets/ico-obstacles.png"> No-Obstacles
+    </div>
+    <div class="modifier suddenDeath" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.suddenDeathEnabled">
+      <img src="assets/ico-sudden-death.png"> Sudden Death
+    </div>
+    <div class="modifier vanishNotes" *ngIf="gameState.gameSpecificData && gameState.gameSpecificData.vanishNotesEnabled">
+      <img src="assets/ico-vanish-notes.png"> Vanish
+    </div>
+  </div>
+</div>
