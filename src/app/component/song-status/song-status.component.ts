@@ -3,8 +3,9 @@ import {GameStateModel} from "../../model/game-state.model";
 import {initialState} from "../../state/gamestate.reducer";
 
 @Component({
-  selector: 'app-song-status',
-  templateUrl: './song-status.component.html'
+    selector: 'app-song-status',
+    templateUrl: './song-status.component.html',
+    standalone: false
 })
 export class SongStatusComponent implements OnInit {
 

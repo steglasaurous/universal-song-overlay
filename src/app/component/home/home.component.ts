@@ -13,8 +13,9 @@ import {selectVisible} from "../../state/visible.selectors";
 import {selectConnectedGame} from "../../state/connected-game.selectors";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html'
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    standalone: false
 })
 export class HomeComponent implements OnInit {
   title = 'self-contained-song-overlay';

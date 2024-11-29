@@ -3,8 +3,9 @@ import {GameStateModel} from "../../model/game-state.model";
 import {initialState} from "../../state/gamestate.reducer";
 
 @Component({
-  selector: 'app-score',
-  templateUrl: './score.component.html'
+    selector: 'app-score',
+    templateUrl: './score.component.html',
+    standalone: false
 })
 export class ScoreComponent implements OnInit {
 

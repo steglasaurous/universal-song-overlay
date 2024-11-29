@@ -4,8 +4,9 @@ import {initialState} from "../../state/gamestate.reducer";
 import {SynthRidersGameDataService} from "../../service/synth-riders-game-data.service";
 
 @Component({
-  selector: 'app-game-specific',
-  templateUrl: './game-specific.component.html'
+    selector: 'app-game-specific',
+    templateUrl: './game-specific.component.html',
+    standalone: false
 })
 export class GameSpecificComponent implements OnInit {
   @Input()

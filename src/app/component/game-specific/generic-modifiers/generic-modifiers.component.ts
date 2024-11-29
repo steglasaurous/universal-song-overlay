@@ -3,10 +3,9 @@ import {GameStateModel} from "../../../model/game-state.model";
 import {initialState} from "../../../state/gamestate.reducer";
 
 @Component({
-  selector: 'app-generic-modifiers',
-  standalone: true,
-  imports: [],
-  templateUrl: './generic-modifiers.component.html'
+    selector: 'app-generic-modifiers',
+    imports: [],
+    templateUrl: './generic-modifiers.component.html'
 })
 export class GenericModifiersComponent {
   @Input()

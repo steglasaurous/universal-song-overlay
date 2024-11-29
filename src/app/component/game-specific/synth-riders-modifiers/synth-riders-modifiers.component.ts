@@ -3,8 +3,9 @@ import {GameStateModel} from "../../../model/game-state.model";
 import {initialState} from "../../../state/gamestate.reducer";
 
 @Component({
-  selector: 'app-synth-riders-modifiers',
-  templateUrl: './synth-riders-modifiers.component.html'
+    selector: 'app-synth-riders-modifiers',
+    templateUrl: './synth-riders-modifiers.component.html',
+    standalone: false
 })
 export class SynthRidersModifiersComponent {
   @Input()

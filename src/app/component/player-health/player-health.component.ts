@@ -3,8 +3,9 @@ import {GameStateModel} from "../../model/game-state.model";
 import {initialState} from "../../state/gamestate.reducer";
 
 @Component({
-  selector: 'app-player-health',
-  templateUrl: './player-health.component.html'
+    selector: 'app-player-health',
+    templateUrl: './player-health.component.html',
+    standalone: false
 })
 export class PlayerHealthComponent implements OnInit {
   @Input()
