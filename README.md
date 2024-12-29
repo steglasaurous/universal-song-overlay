@@ -62,7 +62,7 @@ Setup your game(s) as described here.
 
 ## Synth Riders
 
-1. Install the [Synth Riders Websocket mod](https://github.com/KK964/SynthRiders-Websockets-Mod) - this is what publishes game data used by the overlay.
+1. Install the [Synth Riders Websocket mod](https://github.com/bookdude13/SynthRiders-Websockets-Mod/releases) - this is what publishes game data used by the overlay.
 
 2. Configure Synth's Song Status as per step 1 of [these instructions](https://docs.google.com/document/d/13Ei4bYQRvvhUBIl4Uc5rwls-gvzsQ78bXoJQKQ_qaLo/edit#heading=h.xsyyveoj8zvr). You do not need to do step 2. Note that the important part is making sure that `{{CoverImage}}` is included in the file.  This is what produces the album art for the current song.
 
