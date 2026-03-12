@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, DOCUMENT} from '@angular/core';
 import {selectGameStateFeature} from "../../state/gamestate.selectors";
 import {selectSupportedComponentsFeature} from "../../state/supported-components.selectors";
 import {GameStateModel} from "../../model/game-state.model";
@@ -8,7 +8,7 @@ import {supportedComponentsInitialState} from "../../state/supported-components.
 import {Store} from "@ngrx/store";
 import {GameDataServiceManager} from "../../service/game-data-service-manager";
 import {ActivatedRoute} from "@angular/router";
-import {DOCUMENT} from "@angular/common";
+
 import {selectVisible} from "../../state/visible.selectors";
 import {selectConnectedGame} from "../../state/connected-game.selectors";
 
