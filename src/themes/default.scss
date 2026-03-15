@@ -2,7 +2,7 @@
  * Default theme
  */
 
-@import "bootstrap/scss/bootstrap";
+@use "bootstrap/scss/bootstrap" as *;
 @import 'animate.css';
 
 body {

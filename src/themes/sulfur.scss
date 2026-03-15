@@ -1,4 +1,4 @@
-@import 'default.scss';
+@use './default' as *;
 
 body {
   color: rgb(212, 177, 252);
