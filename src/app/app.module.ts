@@ -25,6 +25,7 @@ import {visibleReducer} from "./state/visible.reducer";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {BeatSaberPlusGameDataService} from "./service/beat-saber-plus-game-data.service";
+import {BeatSaberHttpSiraStatusGameDataService} from "./service/beat-saber-http-sira-status-game-data.service";
 import { SynthRidersModifiersComponent } from './component/game-specific/synth-riders-modifiers/synth-riders-modifiers.component';
 import { GameSpecificComponent } from './component/game-specific/game-specific.component';
 import {GenericModifiersComponent} from "./component/game-specific/generic-modifiers/generic-modifiers.component";
@@ -80,6 +81,9 @@ const routes: Routes =[
     },
     {
       provide: BeatSaberPlusGameDataService, useFactory: GameDataServiceFactory(BeatSaberPlusGameDataService.name), deps: [ Store ]
+    },
+    {
+      provide: BeatSaberHttpSiraStatusGameDataService, useFactory: GameDataServiceFactory(BeatSaberHttpSiraStatusGameDataService.name), deps: [ Store ]
     },
     GameDataServiceManager
   ],
